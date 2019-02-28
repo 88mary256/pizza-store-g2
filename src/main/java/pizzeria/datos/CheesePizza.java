@@ -3,7 +3,7 @@ package main.java.pizzeria.datos;
 /**
  * Concrete Cheese Pizza.
  *
- * @author David Mamamani
+ * @author David Mamani
  */
 public class CheesePizza extends Pizza {
 

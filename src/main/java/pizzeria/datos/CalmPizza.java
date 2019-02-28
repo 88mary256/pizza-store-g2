@@ -3,7 +3,7 @@ package main.java.pizzeria.datos;
 /**
  * Concrete Calm Pizza.
  *
- * @author David Mamamani
+ * @author David Mamani
  */
 public class CalmPizza extends Pizza {
 

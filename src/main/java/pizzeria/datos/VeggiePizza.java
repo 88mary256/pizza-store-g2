@@ -3,7 +3,7 @@ package main.java.pizzeria.datos;
 /**
  * Concrete Veggie Pizza.
  *
- * @author David Mamamani
+ * @author David Mamani
  */
 public class VeggiePizza extends Pizza {
 
