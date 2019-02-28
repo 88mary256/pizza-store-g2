@@ -8,7 +8,7 @@ package main.java.pizzeria.datos;
 public class CheesePizza extends Pizza {
 
     private static final double CHEESE_COST = 98.49;
- 
+
     /**
      * Default constructor.
      */

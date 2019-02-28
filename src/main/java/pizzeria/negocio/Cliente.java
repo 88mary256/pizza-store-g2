@@ -10,7 +10,10 @@ import main.java.pizzeria.datos.PizzaTypes;
  *
  * @author Marines Lopez Soliz
  */
-public class Cliente {
+public final class Cliente {
+
+    private Cliente() {
+    }
 
     /**
      * Main method to execute our purchase.
