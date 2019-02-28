@@ -13,7 +13,7 @@ import main.java.pizzeria.datos.PizzaTypes;
 public final class Cliente {
 
     /**
-     * Default constructor
+     * Default constructor.
      **/
     private Cliente() {
     }
