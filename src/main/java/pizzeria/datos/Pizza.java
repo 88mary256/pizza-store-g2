@@ -16,8 +16,8 @@ public abstract class Pizza {
     /**
      * Parameterized constructor.
      *
-     * @param cost double
-     * @param type PizzaType
+     * @param cost This is the cost.
+     * @param type This is the type.
      */
     public Pizza(final PizzaTypes type, final double cost) {
         this.type = type;
