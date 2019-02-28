@@ -7,8 +7,11 @@ package main.java.pizzeria.datos;
  */
 public class GreekPizza extends Pizza {
 
-    private final static double GREEK_COST = 84.99;
+    private static final double GREEK_COST = 84.99;
 
+    /**
+     * Default constructor.
+     */
     public GreekPizza() {
         super(PizzaTypes.GREEK_PIZZA, GREEK_COST);
     }

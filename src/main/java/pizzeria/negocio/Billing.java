@@ -16,7 +16,10 @@ public class Billing {
 
     private List<Pizza> pizzas = new ArrayList<Pizza>();
 
-    public Billing(double totalCost, List<Pizza> pizzas) {
+    /**
+     * Parameterized constructor.
+     */
+    public Billing(final double totalCost, final List<Pizza> pizzas) {
         this.totalCost = totalCost;
         this.pizzas = pizzas;
     }

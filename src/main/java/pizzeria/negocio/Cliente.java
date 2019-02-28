@@ -17,7 +17,7 @@ public class Cliente {
      *
      * @param args arguments of console execution.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final PizzaStore store = new PizzaStore();
 
         store.orderPizza(PizzaTypes.GREEK_PIZZA);

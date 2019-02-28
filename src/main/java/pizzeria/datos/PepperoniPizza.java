@@ -7,8 +7,11 @@ package main.java.pizzeria.datos;
  */
 public class PepperoniPizza extends Pizza {
 
-    private final static double PEPPERONI_COST = 89.99;
+    private static final double PEPPERONI_COST = 89.99;
 
+    /**
+     * Default constructor.
+     */
     public PepperoniPizza() {
         super(PizzaTypes.PEPPERONI_PIZZA, PEPPERONI_COST);
     }

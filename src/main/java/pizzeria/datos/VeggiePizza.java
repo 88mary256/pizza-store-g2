@@ -1,15 +1,18 @@
 package main.java.pizzeria.datos;
 
 /**
- * Concrete Veggie Pizza
+ * Concrete Veggie Pizza.
  *
  * @author David Mamamani
  */
 public class VeggiePizza extends Pizza {
 
     private String type;
-    private final static double VEGGI_COST = 74.49;
+    private static final double VEGGI_COST = 74.49;
 
+    /**
+     * Default constructor.
+     */
     public VeggiePizza() {
         super(PizzaTypes.VEGGIE_PIZZA, VEGGI_COST);
     }

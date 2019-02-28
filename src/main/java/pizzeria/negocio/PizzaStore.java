@@ -21,17 +21,17 @@ public class PizzaStore {
      * @param type PizzaType
      * @return Pizza
      */
-    public Pizza orderPizza(PizzaTypes type) {
+    public Pizza orderPizza(final PizzaTypes type) {
         return factory.createPizza(type);
     }
 
     /**
      * Create a billing from an order.
      *
-     * @param order
-     * @return
+     * @param order List<OrderItems>
+     * @return billing
      */
-    public Billing orderPizza(List<OrderItem> order) {
+    public Billing orderPizza(final List<OrderItem> order) {
         double totalCost = 0;
         final List<Pizza> pizzas = new ArrayList<Pizza>();
         for (final OrderItem orderItem : order) {

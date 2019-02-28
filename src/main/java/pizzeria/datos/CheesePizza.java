@@ -1,14 +1,17 @@
 package main.java.pizzeria.datos;
 
 /**
- * Concrete Cheese Pizza
+ * Concrete Cheese Pizza.
  *
  * @author David Mamamani
  */
 public class CheesePizza extends Pizza {
 
-    private final static double CHEESE_COST = 98.49;
+    private static final double CHEESE_COST = 98.49;
 
+    /**
+     * Default constructor.
+     */
     public CheesePizza() {
         super(PizzaTypes.CHEESE_PIZZA, CHEESE_COST);
     }

@@ -15,10 +15,10 @@ public class OrderItem {
     /**
      * Parameterized constructor.
      *
-     * @param quantity
-     * @param type
+     * @param quantity int
+     * @param type     PizzaType
      */
-    public OrderItem(int quantity, PizzaTypes type) {
+    public OrderItem(final int quantity, final PizzaTypes type) {
         super();
         this.quantity = quantity;
         this.type = type;
@@ -36,9 +36,9 @@ public class OrderItem {
     /**
      * Setter of quantity.
      *
-     * @param quantity
+     * @param quantity int
      */
-    public void setQuantity(int quantity) {
+    public void setQuantity(final int quantity) {
         this.quantity = quantity;
     }
 
@@ -56,7 +56,7 @@ public class OrderItem {
      *
      * @param type PizzaType
      */
-    public void setType(PizzaTypes type) {
+    public void setType(final PizzaTypes type) {
         this.type = type;
     }
 }

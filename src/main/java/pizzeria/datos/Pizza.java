@@ -14,11 +14,12 @@ public abstract class Pizza {
     private final double cost;
 
     /**
-     * Parameterized constructor
+     * Parameterized constructor.
      *
      * @param cost
+     * @param type
      */
-    public Pizza(PizzaTypes type, double cost) {
+    public Pizza(final PizzaTypes type, final double cost) {
         this.type = type;
         this.cost = cost;
     }
@@ -48,7 +49,7 @@ public abstract class Pizza {
     }
 
     /**
-     * Getter of cost
+     * Getter of cost.
      *
      * @return cost
      */
