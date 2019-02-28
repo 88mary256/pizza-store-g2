@@ -1,4 +1,5 @@
 # pizzeria
 Class Diagram
 
-![Diagram](https://github.com/88mary256/pizzeria/blob/master/resources/pizzeria.png)
+![Diagram](https://github.com/awt-jala/pizza-store-g2/blob/pizzeria/resources/pizzeria.png)
+
