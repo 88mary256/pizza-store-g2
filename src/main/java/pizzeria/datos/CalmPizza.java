@@ -7,7 +7,11 @@ package main.java.pizzeria.datos;
  */
 public class CalmPizza extends Pizza {
 
-    private String type;
+    private final static double CALM_COST = 94.99;
+
+    public CalmPizza() {
+        super(PizzaTypes.CALM_PIZZA, CALM_COST);
+    }
 
     @Override
     public void prepare() {

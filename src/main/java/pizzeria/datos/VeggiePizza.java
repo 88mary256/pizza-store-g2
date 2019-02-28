@@ -8,6 +8,11 @@ package main.java.pizzeria.datos;
 public class VeggiePizza extends Pizza {
 
     private String type;
+    private final static double VEGGI_COST = 74.49;
+
+    public VeggiePizza() {
+        super(PizzaTypes.VEGGIE_PIZZA, VEGGI_COST);
+    }
 
     @Override
     public void prepare() {

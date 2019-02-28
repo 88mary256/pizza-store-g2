@@ -7,5 +7,5 @@ package main.java.pizzeria.datos;
  *
  */
 public enum PizzaTypes {
-    CHEESSE_PIZZA, GREEK_PIZZA, PEPERONI_PIZZA, CLAM_PIZZA, VEGGIE_PIZZA;
+    CHEESE_PIZZA, GREEK_PIZZA, PEPPERONI_PIZZA, CALM_PIZZA, VEGGIE_PIZZA;
 }

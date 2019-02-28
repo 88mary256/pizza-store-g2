@@ -7,7 +7,11 @@ package main.java.pizzeria.datos;
  */
 public class CheesePizza extends Pizza {
 
-    private String type;
+    private final static double CHEESE_COST = 98.49;
+
+    public CheesePizza() {
+        super(PizzaTypes.CHEESE_PIZZA, CHEESE_COST);
+    }
 
     @Override
     public void prepare() {

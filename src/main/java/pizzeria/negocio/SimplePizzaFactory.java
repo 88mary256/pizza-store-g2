@@ -23,13 +23,13 @@ public class SimplePizzaFactory {
      */
     public Pizza createPizza(PizzaTypes type) {
         switch (type) {
-        case CHEESSE_PIZZA:
+        case CHEESE_PIZZA:
             return new CheesePizza();
         case GREEK_PIZZA:
             return new GreekPizza();
-        case PEPERONI_PIZZA:
+        case PEPPERONI_PIZZA:
             return new PepperoniPizza();
-        case CLAM_PIZZA:
+        case CALM_PIZZA:
             return new CalmPizza();
         case VEGGIE_PIZZA:
             return new VeggiePizza();
