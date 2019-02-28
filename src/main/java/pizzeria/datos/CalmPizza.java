@@ -8,7 +8,7 @@ package main.java.pizzeria.datos;
 public class CalmPizza extends Pizza {
 
     private static final double CALM_COST = 94.99;
-
+ 
     /**
      * Default constructor.
      */

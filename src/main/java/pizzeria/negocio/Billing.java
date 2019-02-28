@@ -18,6 +18,9 @@ public class Billing {
 
     /**
      * Parameterized constructor.
+     *
+     * @param totalCost double
+     * @param pizzas    List<Pizza>
      */
     public Billing(final double totalCost, final List<Pizza> pizzas) {
         this.totalCost = totalCost;

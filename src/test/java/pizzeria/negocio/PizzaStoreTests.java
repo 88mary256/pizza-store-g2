@@ -29,7 +29,7 @@ import main.java.pizzeria.negocio.PizzaStore;
  */
 class PizzaStoreTests {
 
-    final PizzaStore store = new PizzaStore();
+    private final PizzaStore store = new PizzaStore();
 
     @BeforeEach
     void setUp() throws Exception {

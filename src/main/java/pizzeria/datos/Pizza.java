@@ -16,8 +16,8 @@ public abstract class Pizza {
     /**
      * Parameterized constructor.
      *
-     * @param cost
-     * @param type
+     * @param cost double
+     * @param type PizzaType
      */
     public Pizza(final PizzaTypes type, final double cost) {
         this.type = type;
@@ -57,6 +57,9 @@ public abstract class Pizza {
         return cost;
     }
 
+    /**
+     * Pizza as string.
+     */
     @Override
     public String toString() {
         return "Pizza " + type + " cost:" + cost;

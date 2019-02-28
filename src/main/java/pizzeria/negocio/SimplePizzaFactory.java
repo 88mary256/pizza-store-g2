@@ -21,7 +21,7 @@ public class SimplePizzaFactory {
      * @param type PizaType
      * @return Pizza
      */
-    public Pizza createPizza(PizzaTypes type) {
+    public Pizza createPizza(final PizzaTypes type) {
         switch (type) {
         case CHEESE_PIZZA:
             return new CheesePizza();
@@ -33,8 +33,9 @@ public class SimplePizzaFactory {
             return new CalmPizza();
         case VEGGIE_PIZZA:
             return new VeggiePizza();
+        default:
+            return null;
         }
-        return null;
     }
 
 }
