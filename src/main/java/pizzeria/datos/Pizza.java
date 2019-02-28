@@ -14,13 +14,19 @@ public abstract class Pizza {
      */
     public void prepare() {
     }
-
+    /**
+     * Method that bake the pizza.
+     */
     public void bake() {
     }
-
+    /**
+     * Method that cut the pizza.
+     */
     public void cut() {
     }
-
+    /**
+     * Method that box the pizza.
+     */
     public void box() {
     }
 }
