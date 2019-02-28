@@ -76,8 +76,8 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify that is possible order multiple pizzas.
-     * and get the total cost and pizzas list.
+     * Test case to verify that is possible order multiple pizzas and get the total
+     * cost and pizzas list.
      */
     @Test
     public void pizzaStoreOrderGroupOfPizzasBilling() {
@@ -85,16 +85,16 @@ public class PizzaStoreTests {
         order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
+        final int amountOfPizzas = 4;
 
         final Billing billing = store.orderPizza(order);
-        assertEquals(String.valueOf(billing.getTotalCost()),
-                String.valueOf(332.46));
-        assertEquals(billing.getPizzas().size(), 4);
+        assertEquals(String.valueOf(billing.getTotalCost()), "332.46");
+        assertEquals(billing.getPizzas().size(), amountOfPizzas);
     }
 
     /**
-     * Test case to verify that is possible order multiple pizzas. 
-     * and get the correct pizzas.
+     * Test case to verify that is possible order multiple pizzas and get the
+     * correct pizzas.
      */
     @Test
     public void pizzaStoreOrderGroupOfPizzasGetCorrectPizzaTypes() {
@@ -107,7 +107,7 @@ public class PizzaStoreTests {
         assertTrue(billing.getPizzas().get(0) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(1) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(2) instanceof CheesePizza);
-        assertTrue(billing.getPizzas().get(3) instanceof GreekPizza);
+        assertTrue(billing.getPizzas().get(billing.getPizzas().size()) instanceof GreekPizza);
     }
 
 }
