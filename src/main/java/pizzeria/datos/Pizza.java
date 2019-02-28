@@ -57,9 +57,6 @@ public abstract class Pizza {
         return cost;
     }
 
-    /**
-     * Pizza as string.
-     */
     @Override
     public String toString() {
         return "Pizza " + type + " cost:" + cost;
