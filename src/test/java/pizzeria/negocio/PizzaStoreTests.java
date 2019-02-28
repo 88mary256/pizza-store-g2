@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import main.java.pizzeria.datos.CalmPizza;
@@ -29,60 +27,77 @@ import main.java.pizzeria.negocio.PizzaStore;
  */
 public class PizzaStoreTests {
 
+    /** store. **/
     private final PizzaStore store = new PizzaStore();
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
+    /**
+     * Test case to verify greek pizza creation.
+     */
     @Test
-    public void pizzaStore_createGreekPizza_ok() {
+    public void pizzaStoreCreateGreekPizzaOk() {
         final Pizza pizza = store.orderPizza(PizzaTypes.GREEK_PIZZA);
         assertTrue(pizza instanceof GreekPizza);
     }
 
+    /**
+     * Test case to verify calm pizza creation.
+     */
     @Test
-    public void pizzaStore_CalmPizza_ok() {
+    public void pizzaStoreCalmPizzaOk() {
         final Pizza pizza = store.orderPizza(PizzaTypes.CALM_PIZZA);
         assertTrue(pizza instanceof CalmPizza);
     }
 
+    /**
+     * Test case to verify cheese pizza creation.
+     */
     @Test
-    public void pizzaStore_createCheesePizza_ok() {
+    public void pizzaStoreCreateCheesePizzaOk() {
         final Pizza pizza = store.orderPizza(PizzaTypes.CHEESE_PIZZA);
         assertTrue(pizza instanceof CheesePizza);
     }
 
+    /**
+     * Test case to verify pepperoni pizza creation.
+     */
     @Test
-    public void pizzaStore_createPepperoniPizza_ok() {
+    public void pizzaStoreCreatePepperoniPizzaOk() {
         final Pizza pizza = store.orderPizza(PizzaTypes.PEPPERONI_PIZZA);
         assertTrue(pizza instanceof PepperoniPizza);
     }
 
+    /**
+     * Test case to verify veggie pizza creation.
+     */
     @Test
-    public void pizzaStore_createVeggiePizza_ok() {
+    public void pizzaStoreCreateVeggiePizzaOk() {
         final Pizza pizza = store.orderPizza(PizzaTypes.VEGGIE_PIZZA);
         assertTrue(pizza instanceof VeggiePizza);
     }
 
+    /**
+     * Test case to verify that is possible order multiple pizzas.
+     * and get the total cost and pizzas list.
+     */
     @Test
-    public void pizzaStore_orderGroupOfPizzas_billing() {
+    public void pizzaStoreOrderGroupOfPizzasBilling() {
         final List<OrderItem> order = new ArrayList<OrderItem>();
         order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
 
         final Billing billing = store.orderPizza(order);
-        assertEquals(String.valueOf(billing.getTotalCost()), String.valueOf(332.46));
+        assertEquals(String.valueOf(billing.getTotalCost()),
+                String.valueOf(332.46));
         assertEquals(billing.getPizzas().size(), 4);
     }
 
+    /**
+     * Test case to verify that is possible order multiple pizzas. 
+     * and get the correct pizzas.
+     */
     @Test
-    public void pizzaStore_orderGroupOfPizzas_getCorrectPizzaTypes() {
+    public void pizzaStoreOrderGroupOfPizzasGetCorrectPizzaTypes() {
         final List<OrderItem> order = new ArrayList<OrderItem>();
         order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
