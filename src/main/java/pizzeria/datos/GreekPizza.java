@@ -3,7 +3,7 @@ package main.java.pizzeria.datos;
 /**
  * Concrete Greek Pizza.
  *
- * @author David Mamamani
+ * @author David Mamani
  */
 public class GreekPizza extends Pizza {
 
