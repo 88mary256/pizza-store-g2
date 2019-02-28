@@ -107,7 +107,7 @@ public class PizzaStoreTests {
         assertTrue(billing.getPizzas().get(0) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(1) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(2) instanceof CheesePizza);
-        assertTrue(billing.getPizzas().get(billing.getPizzas().size()) instanceof GreekPizza);
+        assertTrue(billing.getPizzas().get(billing.getPizzas().size() - 1) instanceof GreekPizza);
     }
 
 }
