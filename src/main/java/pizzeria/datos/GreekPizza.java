@@ -1,4 +1,4 @@
-package main.java.pizzeria.datos;
+package pizzeria.datos;
 
 /**
  * Concrete Greek Pizza.

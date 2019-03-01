@@ -1,12 +1,12 @@
-package main.java.pizzeria.negocio;
+package pizzeria.negocio;
 
-import main.java.pizzeria.datos.CalmPizza;
-import main.java.pizzeria.datos.CheesePizza;
-import main.java.pizzeria.datos.GreekPizza;
-import main.java.pizzeria.datos.PepperoniPizza;
-import main.java.pizzeria.datos.Pizza;
-import main.java.pizzeria.datos.PizzaTypes;
-import main.java.pizzeria.datos.VeggiePizza;
+import pizzeria.datos.CalmPizza;
+import pizzeria.datos.CheesePizza;
+import pizzeria.datos.GreekPizza;
+import pizzeria.datos.PepperoniPizza;
+import pizzeria.datos.Pizza;
+import pizzeria.datos.PizzaTypes;
+import pizzeria.datos.VeggiePizza;
 
 /**
  * Factory Class to help us create different types of Pizzas.

@@ -1,9 +1,10 @@
-package main.java.pizzeria.negocio;
+package pizzeria.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.pizzeria.datos.PizzaTypes;
+import pizzeria.datos.Pizza;
+import pizzeria.datos.PizzaTypes;
 
 /**
  * Class to simulate a client that buy a pizza in the store.
@@ -26,9 +27,10 @@ public final class Cliente {
     public static void main(final String[] args) {
         final PizzaStore store = new PizzaStore();
 
-        store.orderPizza(PizzaTypes.GREEK_PIZZA);
-        store.orderPizza(PizzaTypes.CALM_PIZZA);
-        store.orderPizza(PizzaTypes.VEGGIE_PIZZA);
+        final Pizza p1 = store.orderPizza(PizzaTypes.GREEK_PIZZA);
+        final Pizza p2 = store.orderPizza(PizzaTypes.CALM_PIZZA);
+        final Pizza p3 = store.orderPizza(PizzaTypes.VEGGIE_PIZZA);
+        System.out.println(p1 + "\n" + p2 + "\n " + p3);
 
         final List<OrderItem> order = new ArrayList<OrderItem>();
         order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
@@ -39,5 +41,4 @@ public final class Cliente {
         System.out.println(billing.getTotalCost());
         System.out.println(billing.getPizzas());
     }
-
 }

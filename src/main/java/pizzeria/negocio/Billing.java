@@ -1,9 +1,9 @@
-package main.java.pizzeria.negocio;
+package pizzeria.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.pizzeria.datos.Pizza;
+import pizzeria.datos.Pizza;
 
 /**
  * Contains the total cost of an order and the pizzas for it.

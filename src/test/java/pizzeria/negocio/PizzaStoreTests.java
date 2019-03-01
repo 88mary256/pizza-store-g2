@@ -1,4 +1,4 @@
-package test.java.pizzeria.negocio;
+package pizzeria.negocio;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -8,16 +8,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.java.pizzeria.datos.CalmPizza;
-import main.java.pizzeria.datos.CheesePizza;
-import main.java.pizzeria.datos.GreekPizza;
-import main.java.pizzeria.datos.PepperoniPizza;
-import main.java.pizzeria.datos.Pizza;
-import main.java.pizzeria.datos.PizzaTypes;
-import main.java.pizzeria.datos.VeggiePizza;
-import main.java.pizzeria.negocio.Billing;
-import main.java.pizzeria.negocio.OrderItem;
-import main.java.pizzeria.negocio.PizzaStore;
+import pizzeria.datos.CalmPizza;
+import pizzeria.datos.CheesePizza;
+import pizzeria.datos.GreekPizza;
+import pizzeria.datos.PepperoniPizza;
+import pizzeria.datos.Pizza;
+import pizzeria.datos.PizzaTypes;
+import pizzeria.datos.VeggiePizza;
 
 /**
  * Test suit to verify that pizza store create all types of pizzas.

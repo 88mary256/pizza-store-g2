@@ -1,6 +1,6 @@
-package main.java.pizzeria.negocio;
+package pizzeria.negocio;
 
-import main.java.pizzeria.datos.PizzaTypes;
+import pizzeria.datos.PizzaTypes;
 
 /**
  * This class represent a order item that have the quantity and pizza type.

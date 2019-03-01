@@ -1,4 +1,4 @@
-package main.java.pizzeria.datos;
+package pizzeria.datos;
 
 /**
  * Concrete Veggie Pizza.
@@ -7,7 +7,6 @@ package main.java.pizzeria.datos;
  */
 public class VeggiePizza extends Pizza {
 
-    private String type;
     private static final double VEGGI_COST = 74.49;
 
     /**

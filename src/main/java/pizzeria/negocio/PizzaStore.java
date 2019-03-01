@@ -1,10 +1,10 @@
-package main.java.pizzeria.negocio;
+package pizzeria.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.pizzeria.datos.Pizza;
-import main.java.pizzeria.datos.PizzaTypes;
+import pizzeria.datos.Pizza;
+import pizzeria.datos.PizzaTypes;
 
 /**
  * Class to represent a store of pizzas or pizzeria.
