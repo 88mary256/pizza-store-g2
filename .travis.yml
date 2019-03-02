@@ -18,7 +18,7 @@ addons:
 
 script:
   - gradle test
-  - sonar-scanner
+  - sonar-scanner -X
   - gradle check
 
 after_success:
