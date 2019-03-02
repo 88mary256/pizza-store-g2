@@ -68,7 +68,7 @@ public abstract class Pizza {
 
     /**
      * Getter of ingredients.
-     * 
+     *
      * @return ingredients
      */
     public List<Ingredient> getIngredients() {
@@ -77,7 +77,7 @@ public abstract class Pizza {
 
     /**
      * Adder of ingredients.
-     * 
+     *
      * @param ingredient
      */
     public void addIngredients(final Ingredient ingredient) {
@@ -86,7 +86,7 @@ public abstract class Pizza {
 
     /**
      * Remover of ingredients.
-     * 
+     *
      * @param ingredient
      */
     public void removeIngredients(final Ingredient ingredient) {
