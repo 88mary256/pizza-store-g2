@@ -31,7 +31,7 @@ public class PizzaStoreTests {
     private final PizzaStore store = new PizzaStore();
 
     /**
-     * Test case to verify greek pizza creation.
+     * TC to verify greek pizza creation.
      */
     @Test
     public void pizzaStoreCreateGreekPizzaOk() {
@@ -40,7 +40,7 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify calm pizza creation.
+     * TC to verify calm pizza creation.
      */
     @Test
     public void pizzaStoreCalmPizzaOk() {
@@ -49,7 +49,7 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify cheese pizza creation.
+     * TC to verify cheese pizza creation.
      */
     @Test
     public void pizzaStoreCreateCheesePizzaOk() {
@@ -58,7 +58,7 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify pepperoni pizza creation.
+     * TC to verify pepperoni pizza creation.
      */
     @Test
     public void pizzaStoreCreatePepperoniPizzaOk() {
@@ -67,7 +67,7 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify veggie pizza creation.
+     * TC to verify veggie pizza creation.
      */
     @Test
     public void pizzaStoreCreateVeggiePizzaOk() {
@@ -76,8 +76,8 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify that is possible order multiple pizzas and get the total
-     * cost and pizzas list.
+     * TC to verify that is possible order multiple pizza and get the total cost
+     * and pizza list.
      */
     @Test
     public void pizzaStoreOrderGroupOfPizzasBilling() {
@@ -93,8 +93,8 @@ public class PizzaStoreTests {
     }
 
     /**
-     * Test case to verify that is possible order multiple pizzas and get the
-     * correct pizzas.
+     * TC to verify that is possible order multiple pizzas and get the correct
+     * Pizza.
      */
     @Test
     public void pizzaStoreOrderGroupOfPizzasGetCorrectPizzaTypes() {
@@ -107,7 +107,8 @@ public class PizzaStoreTests {
         assertTrue(billing.getPizzas().get(0) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(1) instanceof VeggiePizza);
         assertTrue(billing.getPizzas().get(2) instanceof CheesePizza);
-        assertTrue(billing.getPizzas().get(billing.getPizzas().size() - 1) instanceof GreekPizza);
+        assertTrue(billing.getPizzas()
+                .get(billing.getPizzas().size() - 1) instanceof GreekPizza);
     }
 
 }

@@ -6,7 +6,9 @@ package main.java.pizzeria.datos;
  * @author David Mamani
  */
 public class PepperoniPizza extends Pizza {
-
+    /**
+     * Cost of PepperoniPizza.
+     */
     private static final double PEPPERONI_COST = 89.99;
 
     /**

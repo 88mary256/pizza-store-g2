@@ -1,5 +1,8 @@
 package main.java.pizzeria.datos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * Define common activities for different Pizza products.
@@ -12,6 +15,7 @@ public abstract class Pizza {
 
     private final PizzaTypes type;
     private final double cost;
+    private final List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     /**
      * Parameterized constructor.
@@ -60,5 +64,32 @@ public abstract class Pizza {
     @Override
     public String toString() {
         return "Pizza " + type + " cost:" + cost;
+    }
+
+    /**
+     * Getter of ingredients.
+     *
+     * @return ingredients
+     */
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    /**
+     * Adder of ingredient.
+     *
+     * @param ingredient this a single ingredient.
+     */
+    public void addIngredients(final Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
+
+    /**
+     * Remover of ingredients.
+     *
+     * @param ingredient this is single ingredient.
+     */
+    public void removeIngredients(final Ingredient ingredient) {
+        this.ingredients.remove(ingredient);
     }
 }
