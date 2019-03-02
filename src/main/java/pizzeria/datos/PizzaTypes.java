@@ -7,5 +7,9 @@ package pizzeria.datos;
  *
  */
 public enum PizzaTypes {
-    CHEESE_PIZZA, GREEK_PIZZA, PEPPERONI_PIZZA, CALM_PIZZA, VEGGIE_PIZZA;
+    /**
+     * List of Pizza Types.
+     */
+    CHEESE_PIZZA, GREEK_PIZZA, PEPPERONI_PIZZA, CALM_PIZZA, VEGGIE_PIZZA,
+    CUSTOM_PIZZA;
 }
