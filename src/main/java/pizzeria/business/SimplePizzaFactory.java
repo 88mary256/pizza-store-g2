@@ -1,12 +1,12 @@
-package pizzeria.negocio;
+package pizzeria.business;
 
-import pizzeria.datos.CalmPizza;
-import pizzeria.datos.CheesePizza;
-import pizzeria.datos.GreekPizza;
-import pizzeria.datos.PepperoniPizza;
-import pizzeria.datos.Pizza;
-import pizzeria.datos.PizzaTypes;
-import pizzeria.datos.VeggiePizza;
+import pizzeria.data.CalmPizza;
+import pizzeria.data.CheesePizza;
+import pizzeria.data.GreekPizza;
+import pizzeria.data.PepperoniPizza;
+import pizzeria.data.Pizza;
+import pizzeria.data.PizzaTypes;
+import pizzeria.data.VeggiePizza;
 
 /**
  * Factory Class to help us create different types of Pizzas.

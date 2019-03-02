@@ -1,11 +1,11 @@
-package pizzeria.datos;
+package pizzeria.data;
 
-import static pizzeria.datos.Ingredient.ARTICHOKES;
-import static pizzeria.datos.Ingredient.BASIL;
-import static pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
-import static pizzeria.datos.Ingredient.OLIVES;
-import static pizzeria.datos.Ingredient.RED_PEPPER;
-import static pizzeria.datos.Ingredient.TOMATOES;
+import static pizzeria.data.Ingredient.ARTICHOKES;
+import static pizzeria.data.Ingredient.BASIL;
+import static pizzeria.data.Ingredient.MOZZARELLA_CHEESE;
+import static pizzeria.data.Ingredient.OLIVES;
+import static pizzeria.data.Ingredient.RED_PEPPER;
+import static pizzeria.data.Ingredient.TOMATOES;
 
 /**
  * Concrete Greek Pizza.
@@ -13,16 +13,12 @@ import static pizzeria.datos.Ingredient.TOMATOES;
  * @author David Mamani
  */
 public class GreekPizza extends Pizza {
-    /**
-     * Cost of GreekPizza.
-     */
-    private static final double GREEK_COST = 84.99;
 
     /**
      * Default constructor.
      */
     public GreekPizza() {
-        super(PizzaTypes.GREEK_PIZZA, GREEK_COST);
+        super(PizzaTypes.GREEK_PIZZA);
         addIngredients(TOMATOES);
         addIngredients(MOZZARELLA_CHEESE);
         addIngredients(RED_PEPPER);

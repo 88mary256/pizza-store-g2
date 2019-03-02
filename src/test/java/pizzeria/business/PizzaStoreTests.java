@@ -1,4 +1,4 @@
-package pizzeria.negocio;
+package pizzeria.business;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -8,13 +8,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import pizzeria.datos.CalmPizza;
-import pizzeria.datos.CheesePizza;
-import pizzeria.datos.GreekPizza;
-import pizzeria.datos.PepperoniPizza;
-import pizzeria.datos.Pizza;
-import pizzeria.datos.PizzaTypes;
-import pizzeria.datos.VeggiePizza;
+import pizzeria.data.CalmPizza;
+import pizzeria.data.CheesePizza;
+import pizzeria.data.GreekPizza;
+import pizzeria.data.PepperoniPizza;
+import pizzeria.data.Pizza;
+import pizzeria.data.PizzaTypes;
+import pizzeria.data.VeggiePizza;
 
 /**
  * Test suit to verify that pizza store create all types of pizzas.
@@ -83,9 +83,12 @@ public class PizzaStoreTests {
         order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
         final int amountOfPizzas = 4;
+        final int sizeOfPrice = 6;
 
         final Billing billing = store.orderPizza(order);
-        assertEquals(String.valueOf(billing.getTotalCost()), "332.46");
+        System.out.println("++++" + billing.getTotalCost());
+        assertEquals(String.valueOf(billing.getTotalCost()).substring(0,
+                sizeOfPrice), "306.96");
         assertEquals(billing.getPizzas().size(), amountOfPizzas);
     }
 

@@ -1,9 +1,12 @@
-package pizzeria.negocio;
+/**
+ * Info about this package doing something for package-info.java file.
+ */
+package pizzeria.business;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pizzeria.datos.Pizza;
+import pizzeria.data.Pizza;
 
 /**
  * Contains the total cost of an order and the pizzas for it.
@@ -12,19 +15,21 @@ import pizzeria.datos.Pizza;
  */
 public class Billing {
 
+    /** Total cost of the billing. **/
     private double totalCost = 0;
 
+    /** Pizzas list of the billing. **/
     private List<Pizza> pizzas = new ArrayList<Pizza>();
 
     /**
      * Parameterized constructor.
      *
-     * @param totalCost double
-     * @param pizzas    List<Pizza>
+     * @param newTotalCost double
+     * @param newPizzas    List<Pizza>
      */
-    public Billing(final double totalCost, final List<Pizza> pizzas) {
-        this.totalCost = totalCost;
-        this.pizzas = pizzas;
+    public Billing(final double newTotalCost, final List<Pizza> newPizzas) {
+        this.totalCost = newTotalCost;
+        this.pizzas = newPizzas;
     }
 
     /**

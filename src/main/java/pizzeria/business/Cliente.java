@@ -1,10 +1,10 @@
-package pizzeria.negocio;
+package pizzeria.business;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pizzeria.datos.Pizza;
-import pizzeria.datos.PizzaTypes;
+import pizzeria.data.Pizza;
+import pizzeria.data.PizzaTypes;
 
 /**
  * Class to simulate a client that buy a pizza in the store.

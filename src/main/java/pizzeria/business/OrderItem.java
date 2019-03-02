@@ -1,6 +1,6 @@
-package pizzeria.negocio;
+package pizzeria.business;
 
-import pizzeria.datos.PizzaTypes;
+import pizzeria.data.PizzaTypes;
 
 /**
  * This class represent a order item that have the quantity and pizza type.
@@ -9,19 +9,22 @@ import pizzeria.datos.PizzaTypes;
  */
 public class OrderItem {
 
+    /** Quantity of pizzas. **/
     private int quantity;
+
+    /** Type of pizza. **/
     private PizzaTypes type;
 
     /**
      * Parameterized constructor.
      *
-     * @param quantity int
-     * @param type     PizzaType
+     * @param newQuantity int
+     * @param newType     PizzaType
      */
-    public OrderItem(final int quantity, final PizzaTypes type) {
+    public OrderItem(final int newQuantity, final PizzaTypes newType) {
         super();
-        this.quantity = quantity;
-        this.type = type;
+        this.quantity = newQuantity;
+        this.type = newType;
     }
 
     /**
@@ -36,10 +39,10 @@ public class OrderItem {
     /**
      * Setter of quantity.
      *
-     * @param quantity int
+     * @param newQuantity int.
      */
-    public void setQuantity(final int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(final int newQuantity) {
+        this.quantity = newQuantity;
     }
 
     /**
@@ -54,9 +57,9 @@ public class OrderItem {
     /**
      * Setter of Pizza Type.
      *
-     * @param type PizzaType
+     * @param newType PizzaType
      */
-    public void setType(final PizzaTypes type) {
-        this.type = type;
+    public void setType(final PizzaTypes newType) {
+        this.type = newType;
     }
 }

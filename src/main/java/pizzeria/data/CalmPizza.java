@@ -1,9 +1,12 @@
-package pizzeria.datos;
+/**
+ * Info about this package doing something for package-info.java file.
+ */
+package pizzeria.data;
 
-import static pizzeria.datos.Ingredient.CALM;
-import static pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
-import static pizzeria.datos.Ingredient.PARMESAN_CHEESE;
-import static pizzeria.datos.Ingredient.RED_PEPPER;
+import static pizzeria.data.Ingredient.CALM;
+import static pizzeria.data.Ingredient.MOZZARELLA_CHEESE;
+import static pizzeria.data.Ingredient.PARMESAN_CHEESE;
+import static pizzeria.data.Ingredient.RED_PEPPER;
 
 /**
  * Concrete Calm Pizza.
@@ -11,16 +14,12 @@ import static pizzeria.datos.Ingredient.RED_PEPPER;
  * @author David Mamani
  */
 public class CalmPizza extends Pizza {
-    /**
-     * Cost of CalmPizza.
-     */
-    private static final double CALM_COST = 94.99;
 
     /**
      * Default constructor.
      */
     public CalmPizza() {
-        super(PizzaTypes.CALM_PIZZA, CALM_COST);
+        super(PizzaTypes.CALM_PIZZA);
         addIngredients(PARMESAN_CHEESE);
         addIngredients(CALM);
         addIngredients(MOZZARELLA_CHEESE);
@@ -44,6 +43,5 @@ public class CalmPizza extends Pizza {
 
     @Override
     public void box() {
-
     }
 }

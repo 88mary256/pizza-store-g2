@@ -1,9 +1,9 @@
-package pizzeria.datos;
+package pizzeria.data;
 
-import static pizzeria.datos.Ingredient.CALM;
-import static pizzeria.datos.Ingredient.GREEN_PEPPER;
-import static pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
-import static pizzeria.datos.Ingredient.PARMESAN_CHEESE;
+import static pizzeria.data.Ingredient.CALM;
+import static pizzeria.data.Ingredient.GREEN_PEPPER;
+import static pizzeria.data.Ingredient.MOZZARELLA_CHEESE;
+import static pizzeria.data.Ingredient.PARMESAN_CHEESE;
 
 /**
  * Concrete Cheese Pizza.
@@ -11,16 +11,12 @@ import static pizzeria.datos.Ingredient.PARMESAN_CHEESE;
  * @author David Mamani
  */
 public class CheesePizza extends Pizza {
-    /**
-     * Cost of CheesePizza.
-     */
-    private static final double CHEESE_COST = 98.49;
 
     /**
      * Default constructor.
      */
     public CheesePizza() {
-        super(PizzaTypes.CHEESE_PIZZA, CHEESE_COST);
+        super(PizzaTypes.CHEESE_PIZZA);
         addIngredients(PARMESAN_CHEESE);
         addIngredients(MOZZARELLA_CHEESE);
         addIngredients(GREEN_PEPPER);

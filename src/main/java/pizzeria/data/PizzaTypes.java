@@ -1,4 +1,4 @@
-package pizzeria.datos;
+package pizzeria.data;
 
 /**
  * Enumerator for types of pizzas.
@@ -7,9 +7,8 @@ package pizzeria.datos;
  *
  */
 public enum PizzaTypes {
-    /**
-     * List of Pizza Types.
-     */
+    /** List of Pizza Types. */
     CHEESE_PIZZA, GREEK_PIZZA, PEPPERONI_PIZZA, CALM_PIZZA, VEGGIE_PIZZA,
+    /** List of Pizza Types. */
     CUSTOM_PIZZA;
 }

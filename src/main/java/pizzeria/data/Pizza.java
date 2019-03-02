@@ -1,4 +1,4 @@
-package pizzeria.datos;
+package pizzeria.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,26 +15,31 @@ public class Pizza {
     /**
      * Cost of base customPizza.
      */
-    private static final double CUSTOM_COST = 60.00;
+    private static final double CUSTOM_COST = 44.99;
 
     /** Type of the pizza. **/
     private final PizzaTypes type;
 
     /** cost of the pizza. **/
-    private double cost = CUSTOM_COST;
+    private double cost;
 
     /** ingredients of a pizza. **/
     private final List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
+    /** Default Constructor. **/
+    private Pizza() {
+        this.type = PizzaTypes.CUSTOM_PIZZA;
+        this.cost = CUSTOM_COST;
+    }
+
     /**
      * Parameterized constructor.
      *
-     * @param cost This is the cost.
-     * @param type This is the type.
+     * @param newType This is the type.
      */
-    public Pizza(final PizzaTypes type, final double cost) {
-        this.type = type;
-        this.cost = cost;
+    public Pizza(final PizzaTypes newType) {
+        this.type = newType;
+        this.cost = CUSTOM_COST;
     }
 
     /**

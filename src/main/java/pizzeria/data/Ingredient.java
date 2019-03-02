@@ -1,4 +1,4 @@
-package pizzeria.datos;
+package pizzeria.data;
 
 /**
  * Enumerator for ingredients.
@@ -7,11 +7,11 @@ package pizzeria.datos;
  *
  */
 public enum Ingredient {
-    /**
-     * List of ingredients.
-     */
+    /** List of ingredients. */
     TOMATOES(2), MOZZARELLA_CHEESE(8), GREEN_PEPPER(3), RED_PEPPER(3),
+    /** List of ingredients. */
     OLIVES(6), BASIL(6), GROUND(6), MUSHRROOMS(10), ARTICHOKES(8), EGG_PLANT(8),
+    /** List of ingredients. */
     ONION(3), PARMESAN_CHEESE(8), CALM(15);
 
     /** cost for additional ingredient. **/
@@ -20,10 +20,10 @@ public enum Ingredient {
     /**
      * Default Constructor.
      *
-     * @param cost double.
+     * @param newCost double.
      **/
-    private Ingredient(final double cost) {
-        this.cost = cost;
+    Ingredient(final double newCost) {
+        this.cost = newCost;
     }
 
     /**
