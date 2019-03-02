@@ -86,7 +86,6 @@ public class PizzaStoreTests {
         final int sizeOfPrice = 6;
 
         final Billing billing = store.orderPizza(order);
-        System.out.println("++++" + billing.getTotalCost());
         assertEquals(String.valueOf(billing.getTotalCost()).substring(0,
                 sizeOfPrice), "306.96");
         assertEquals(billing.getPizzas().size(), amountOfPizzas);
