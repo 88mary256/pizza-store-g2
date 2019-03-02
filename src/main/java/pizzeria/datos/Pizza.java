@@ -76,9 +76,9 @@ public abstract class Pizza {
     }
 
     /**
-     * Adder of ingredients.
+     * Adder of ingredient.
      *
-     * @param ingredient
+     * @param ingredient this a single ingredient.
      */
     public void addIngredients(final Ingredient ingredient) {
         this.ingredients.add(ingredient);
@@ -87,7 +87,7 @@ public abstract class Pizza {
     /**
      * Remover of ingredients.
      *
-     * @param ingredient
+     * @param ingredient this is single ingredient.
      */
     public void removeIngredients(final Ingredient ingredient) {
         this.ingredients.remove(ingredient);
