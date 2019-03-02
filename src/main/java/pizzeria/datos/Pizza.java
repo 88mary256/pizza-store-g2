@@ -11,10 +11,19 @@ import java.util.List;
  *
  */
 
-public abstract class Pizza {
+public class Pizza {
+    /**
+     * Cost of base customPizza.
+     */
+    private static final double CUSTOM_COST = 60.00;
 
+    /** Type of the pizza. **/
     private final PizzaTypes type;
-    private final double cost;
+
+    /** cost of the pizza. **/
+    private double cost = CUSTOM_COST;
+
+    /** ingredients of a pizza. **/
     private final List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     /**
@@ -61,6 +70,7 @@ public abstract class Pizza {
         return cost;
     }
 
+    /** Customized toString method. **/
     @Override
     public String toString() {
         return "Pizza " + type + " cost:" + cost;
@@ -82,6 +92,7 @@ public abstract class Pizza {
      */
     public void addIngredients(final Ingredient ingredient) {
         this.ingredients.add(ingredient);
+        this.cost += ingredient.getCost();
     }
 
     /**
@@ -91,5 +102,6 @@ public abstract class Pizza {
      */
     public void removeIngredients(final Ingredient ingredient) {
         this.ingredients.remove(ingredient);
+        this.cost = this.cost - ingredient.getCost();
     }
 }

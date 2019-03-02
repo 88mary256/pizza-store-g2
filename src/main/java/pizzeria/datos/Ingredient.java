@@ -10,6 +10,28 @@ public enum Ingredient {
     /**
      * List of ingredients.
      */
-    TOMATOES, MOZZARELLA_CHEESE, GREEN_PEPPER, RED_PEPPER, OLIVES, BASIL,
-    GROUND, MUSHRROOMS, ARTICHOKES, EGG_PLANT, ONION, PARMESAN_CHEESE, CALM;
+    TOMATOES(2), MOZZARELLA_CHEESE(8), GREEN_PEPPER(3), RED_PEPPER(3),
+    OLIVES(6), BASIL(6), GROUND(6), MUSHRROOMS(10), ARTICHOKES(8), EGG_PLANT(8),
+    ONION(3), PARMESAN_CHEESE(8), CALM(15);
+
+    /** cost for additional ingredient. **/
+    private double cost;
+
+    /**
+     * Default Constructor.
+     *
+     * @param cost double.
+     **/
+    private Ingredient(final double cost) {
+        this.cost = cost;
+    }
+
+    /**
+     * Getter of the cost.
+     *
+     * @return cost double.
+     **/
+    public double getCost() {
+        return cost;
+    }
 }
