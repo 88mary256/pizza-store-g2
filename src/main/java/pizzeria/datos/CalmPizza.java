@@ -1,4 +1,4 @@
-package main.java.pizzeria.datos;
+package pizzeria.datos;
 
 import static main.java.pizzeria.datos.Ingredient.CALM;
 import static main.java.pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;

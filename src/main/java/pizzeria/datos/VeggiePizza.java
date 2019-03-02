@@ -1,10 +1,10 @@
-package main.java.pizzeria.datos;
+package pizzeria.datos;
 
-import static main.java.pizzeria.datos.Ingredient.EGG_PLANT;
-import static main.java.pizzeria.datos.Ingredient.GROUND;
-import static main.java.pizzeria.datos.Ingredient.MUSHRROOMS;
-import static main.java.pizzeria.datos.Ingredient.ONION;
-import static main.java.pizzeria.datos.Ingredient.RED_PEPPER;
+import static pizzeria.datos.Ingredient.EGG_PLANT;
+import static pizzeria.datos.Ingredient.GROUND;
+import static pizzeria.datos.Ingredient.MUSHRROOMS;
+import static pizzeria.datos.Ingredient.ONION;
+import static pizzeria.datos.Ingredient.RED_PEPPER;
 
 /**
  * Concrete Veggie Pizza.
@@ -12,6 +12,7 @@ import static main.java.pizzeria.datos.Ingredient.RED_PEPPER;
  * @author David Mamani
  */
 public class VeggiePizza extends Pizza {
+
     /**
      * Cost of VeggiePizza.
      */

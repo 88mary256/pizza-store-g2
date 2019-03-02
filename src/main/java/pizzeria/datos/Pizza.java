@@ -1,4 +1,4 @@
-package main.java.pizzeria.datos;
+package pizzeria.datos;
 
 import java.util.ArrayList;
 import java.util.List;
