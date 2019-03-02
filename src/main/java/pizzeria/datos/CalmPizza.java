@@ -1,9 +1,9 @@
 package pizzeria.datos;
 
-import static main.java.pizzeria.datos.Ingredient.CALM;
-import static main.java.pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
-import static main.java.pizzeria.datos.Ingredient.PARMESAN_CHEESE;
-import static main.java.pizzeria.datos.Ingredient.RED_PEPPER;
+import static pizzeria.datos.Ingredient.CALM;
+import static pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
+import static pizzeria.datos.Ingredient.PARMESAN_CHEESE;
+import static pizzeria.datos.Ingredient.RED_PEPPER;
 
 /**
  * Concrete Calm Pizza.

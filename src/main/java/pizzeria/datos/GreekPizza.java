@@ -1,11 +1,11 @@
 package pizzeria.datos;
 
-import static main.java.pizzeria.datos.Ingredient.ARTICHOKES;
-import static main.java.pizzeria.datos.Ingredient.BASIL;
-import static main.java.pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
-import static main.java.pizzeria.datos.Ingredient.OLIVES;
-import static main.java.pizzeria.datos.Ingredient.RED_PEPPER;
-import static main.java.pizzeria.datos.Ingredient.TOMATOES;
+import static pizzeria.datos.Ingredient.ARTICHOKES;
+import static pizzeria.datos.Ingredient.BASIL;
+import static pizzeria.datos.Ingredient.MOZZARELLA_CHEESE;
+import static pizzeria.datos.Ingredient.OLIVES;
+import static pizzeria.datos.Ingredient.RED_PEPPER;
+import static pizzeria.datos.Ingredient.TOMATOES;
 
 /**
  * Concrete Greek Pizza.
