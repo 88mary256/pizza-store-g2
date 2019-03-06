@@ -3,6 +3,7 @@ package pizzeria.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import pizzeria.data.Ingredient;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
 
@@ -13,8 +14,17 @@ import pizzeria.data.PizzaTypes;
  */
 public class PizzaStore {
 
+    /** Store name. **/
+    private final String name;
+
     /** Factory of pizzas. **/
-    private final SimplePizzaFactory factory = new SimplePizzaFactory();
+    private final PizzaFactory factory;
+
+    public PizzaStore(final String newName,
+            final List<Ingredient> newIngredients) {
+        this.name = newName;
+        this.factory = new PizzaFactory(newIngredients);
+    }
 
     /**
      * Create a pizza with the pizzaType.
@@ -44,5 +54,9 @@ public class PizzaStore {
             totalCost += orderItem.getQuantity() * pizza.getCost();
         }
         return new Billing(totalCost, pizzas);
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

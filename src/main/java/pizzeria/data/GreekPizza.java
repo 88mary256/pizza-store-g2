@@ -1,11 +1,11 @@
 package pizzeria.data;
 
-import static pizzeria.data.Ingredient.ARTICHOKES;
-import static pizzeria.data.Ingredient.BASIL;
-import static pizzeria.data.Ingredient.MOZZARELLA_CHEESE;
-import static pizzeria.data.Ingredient.OLIVES;
-import static pizzeria.data.Ingredient.RED_PEPPER;
-import static pizzeria.data.Ingredient.TOMATOES;
+import static pizzeria.data.IngredientType.ARTICHOKES;
+import static pizzeria.data.IngredientType.BASIL;
+import static pizzeria.data.IngredientType.MOZZARELLA_CHEESE;
+import static pizzeria.data.IngredientType.OLIVES;
+import static pizzeria.data.IngredientType.RED_PEPPER;
+import static pizzeria.data.IngredientType.TOMATOES;
 
 /**
  * Concrete Greek Pizza.

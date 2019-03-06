@@ -25,7 +25,8 @@ public final class Cliente {
      * @param args arguments of console execution.
      */
     public static void main(final String[] args) {
-        final PizzaStore store = new PizzaStore();
+        final Company company = new Company();
+        final PizzaStore store = company.getStore("sucrusal 1");
 
         final Pizza p1 = store.orderPizza(PizzaTypes.GREEK_PIZZA);
         final Pizza p2 = store.orderPizza(PizzaTypes.CALM_PIZZA);

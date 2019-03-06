@@ -13,7 +13,7 @@ import pizzeria.data.VeggiePizza;
  *
  * @author Marines Lopez Soliz
  */
-public class SimplePizzaFactory {
+public class PizzaFactorySucursal1 {
 
     /**
      * Create a pizza from pizza type.

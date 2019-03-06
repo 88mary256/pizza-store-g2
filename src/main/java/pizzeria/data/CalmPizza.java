@@ -3,10 +3,10 @@
  */
 package pizzeria.data;
 
-import static pizzeria.data.Ingredient.CALM;
-import static pizzeria.data.Ingredient.MOZZARELLA_CHEESE;
-import static pizzeria.data.Ingredient.PARMESAN_CHEESE;
-import static pizzeria.data.Ingredient.RED_PEPPER;
+import static pizzeria.data.IngredientType.CALM;
+import static pizzeria.data.IngredientType.MOZZARELLA_CHEESE;
+import static pizzeria.data.IngredientType.PARMESAN_CHEESE;
+import static pizzeria.data.IngredientType.RED_PEPPER;
 
 /**
  * Concrete Calm Pizza.

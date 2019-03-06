@@ -1,10 +1,10 @@
 package pizzeria.data;
 
-import static pizzeria.data.Ingredient.EGG_PLANT;
-import static pizzeria.data.Ingredient.GROUND;
-import static pizzeria.data.Ingredient.MUSHRROOMS;
-import static pizzeria.data.Ingredient.ONION;
-import static pizzeria.data.Ingredient.RED_PEPPER;
+import static pizzeria.data.IngredientType.EGG_PLANT;
+import static pizzeria.data.IngredientType.GROUND;
+import static pizzeria.data.IngredientType.MUSHRROOMS;
+import static pizzeria.data.IngredientType.ONION;
+import static pizzeria.data.IngredientType.RED_PEPPER;
 
 /**
  * Concrete Veggie Pizza.
