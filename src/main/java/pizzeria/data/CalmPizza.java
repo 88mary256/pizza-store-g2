@@ -3,11 +3,6 @@
  */
 package pizzeria.data;
 
-import static pizzeria.data.IngredientType.CALM;
-import static pizzeria.data.IngredientType.MOZZARELLA_CHEESE;
-import static pizzeria.data.IngredientType.PARMESAN_CHEESE;
-import static pizzeria.data.IngredientType.RED_PEPPER;
-
 /**
  * Concrete Calm Pizza.
  *
@@ -20,10 +15,6 @@ public class CalmPizza extends Pizza {
      */
     public CalmPizza() {
         super(PizzaTypes.CALM_PIZZA);
-        addIngredients(PARMESAN_CHEESE);
-        addIngredients(CALM);
-        addIngredients(MOZZARELLA_CHEESE);
-        addIngredients(RED_PEPPER);
     }
 
     @Override

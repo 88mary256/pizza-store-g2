@@ -20,9 +20,9 @@ public class Ingredient {
     /**
      * Default Constructor.
      *
-     * @param ingredient IngredientType
-     * @param cost       double
-     * @param unity      String, e.g. 8km
+     * @param newIngredient IngredientType
+     * @param newCost       double
+     * @param newUnity      String, e.g. 8km
      */
     public Ingredient(final IngredientType newIngredient, final double newCost,
             final String newUnity) {

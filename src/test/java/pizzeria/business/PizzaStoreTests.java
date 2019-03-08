@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pizzeria.data.CalmPizza;
@@ -18,6 +19,7 @@ import pizzeria.data.PepperoniPizza;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
 import pizzeria.data.VeggiePizza;
+import pizzeria.util.XmlParser;
 
 /**
  * Test suit to verify that pizza store create all types of pizzas.
@@ -28,7 +30,14 @@ import pizzeria.data.VeggiePizza;
 public class PizzaStoreTests {
 
     /** store. **/
-    private final PizzaStore store = new PizzaStore();
+    private PizzaStore store;
+
+    @Before
+    public void before() {
+        final Company company = XmlParser
+                .getCompany("resources/loadStores.xml");
+        store = company.getStore(0);
+    }
 
     /**
      * TC to verify greek pizza creation.

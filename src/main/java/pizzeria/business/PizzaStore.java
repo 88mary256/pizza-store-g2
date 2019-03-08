@@ -1,9 +1,12 @@
 package pizzeria.business;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import pizzeria.data.Ingredient;
+import pizzeria.data.IngredientType;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
 
@@ -20,10 +23,18 @@ public class PizzaStore {
     /** Factory of pizzas. **/
     private final PizzaFactory factory;
 
+    /**
+     * Parameterized constructor.
+     *
+     * @param newName        name
+     * @param newIngredients store ingredient collection.
+     * @param newMenuDetail  ingredient types of a pizza type per store.
+     */
     public PizzaStore(final String newName,
-            final List<Ingredient> newIngredients) {
+            final Map<IngredientType, Ingredient> newIngredients,
+            final Map<PizzaTypes, Collection<IngredientType>> newMenuDetail) {
         this.name = newName;
-        this.factory = new PizzaFactory(newIngredients);
+        this.factory = new PizzaFactory(newIngredients, newMenuDetail);
     }
 
     /**
@@ -56,6 +67,7 @@ public class PizzaStore {
         return new Billing(totalCost, pizzas);
     }
 
+    /** Getter of store name. **/
     public String getName() {
         return this.name;
     }

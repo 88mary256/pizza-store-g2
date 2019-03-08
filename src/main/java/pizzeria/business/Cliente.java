@@ -5,6 +5,7 @@ import java.util.List;
 
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
+import pizzeria.util.XmlParser;
 
 /**
  * Class to simulate a client that buy a pizza in the store.
@@ -25,8 +26,9 @@ public final class Cliente {
      * @param args arguments of console execution.
      */
     public static void main(final String[] args) {
-        final Company company = new Company();
-        final PizzaStore store = company.getStore("sucrusal 1");
+        final Company company = XmlParser
+                .getCompany("resources/loadStores.xml");
+        final PizzaStore store = company.getStore(0);
 
         final Pizza p1 = store.orderPizza(PizzaTypes.GREEK_PIZZA);
         final Pizza p2 = store.orderPizza(PizzaTypes.CALM_PIZZA);
