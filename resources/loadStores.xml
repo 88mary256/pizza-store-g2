@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<company>
+	<store name="Sucursal 1">
+		<ingredients>
+			<ingredient type="TOMATOES" cost=2 unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost=3 unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost=3 unity="100gr"/>
+			<ingredient type="ONION" cost=3 unity="500gr"/>
+			<ingredient type="OLIVES" cost=6 unity="6"/>
+			<ingredient type="BASIL" cost=6 unity="500gr"/>
+			<ingredient type="GROUND" cost=6 unity="500gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost=8 unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost=8 unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost=8 unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost=8 unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost=10 unity="500gr"/>
+			<ingredient type="CALM" cost=15 unity="500gr"/>
+		</ingredients>
+		<menu>
+			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, GREEN_PEPPER">
+			</pizza>
+			<pizza type="GREEK_PIZZA" ingredients="TOMATOES, MOZZARELLA_CHEESE, RED_PEPPER, ARTICHOKES, OLIVES, BASIL">
+			</pizza>
+			<pizza type="PEPPERONI_PIZZA" ingredients="PEPPERONI, MOZZARELLA_CHEESE, PARMESAN_CHEESE, BASIL">
+			</pizza>
+			<pizza type="CALM_PIZZA" ingredients="PARMESAN_CHEESE, CALM, MOZZARELLA_CHEESE, RED_PEPPER">
+			</pizza>
+			<pizza type="VEGGIE_PIZZA" ingredients="EGG_PLANT, MUSHRROOMS, ONION, RED_PEPPER, GROUND">
+			</pizza>
+		</menu>
+	</store>
+	<store name="Sucursal 2">
+		<ingredients>
+			<ingredient type="TOMATOES" cost=3 unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost=4 unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost=4 unity="100gr"/>
+			<ingredient type="ONION" cost=4 unity="500gr"/>
+			<ingredient type="OLIVES" cost=7 unity="6"/>
+			<ingredient type="BASIL" cost=6 unity="300gr"/>
+			<ingredient type="GROUND" cost=6 unity="300gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost=9 unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost=9 unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost=9 unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost=9 unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost=11 unity="500gr"/>
+			<ingredient type="CALM" cost=16 unity="500gr"/>
+		</ingredients>
+		<menu>
+			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, GREEN_PEPPER">
+			</pizza>
+			<pizza type="GREEK_PIZZA" ingredients="TOMATOES, MOZZARELLA_CHEESE, RED_PEPPER, ARTICHOKES, OLIVES, BASIL">
+			</pizza>
+			<pizza type="PEPPERONI_PIZZA" ingredients="PEPPERONI, MOZZARELLA_CHEESE, PARMESAN_CHEESE, BASIL">
+			</pizza>
+			<pizza type="CALM_PIZZA" ingredients="PARMESAN_CHEESE, CALM, MOZZARELLA_CHEESE, RED_PEPPER">
+			</pizza>
+			<pizza type="VEGGIE_PIZZA" ingredients="EGG_PLANT, MUSHRROOMS, ONION, RED_PEPPER, GROUND">
+			</pizza>
+		</menu>
+	</store>
+	<store name="Sucursal 3">
+		<ingredients>
+			<ingredient type="TOMATOES" cost=2 unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost=3 unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost=3 unity="100gr"/>
+			<ingredient type="ONION" cost=3 unity="500gr"/>
+			<ingredient type="OLIVES" cost=6 unity="6"/>
+			<ingredient type="BASIL" cost=6 unity="500gr"/>
+			<ingredient type="GROUND" cost=6 unity="500gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost=8 unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost=8 unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost=8 unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost=8 unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost=10 unity="500gr"/>
+			<ingredient type="CALM" cost=15 unity="500gr"/>
+		</ingredients>
+		<menu>
+			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, OLIVES">
+			</pizza>
+			<pizza type="GREEK_PIZZA" ingredients="TOMATOES, PARMESAN_CHEESE, RED_PEPPER, ARTICHOKES, OLIVES, BASIL">
+			</pizza>
+			<pizza type="PEPPERONI_PIZZA" ingredients="PEPPERONI, MOZZARELLA_CHEESE, PARMESAN_CHEESE, BASIL">
+			</pizza>
+			<pizza type="CALM_PIZZA" ingredients="PARMESAN_CHEESE, CALM, MOZZARELLA_CHEESE, RED_PEPPER">
+			</pizza>
+			<pizza type="VEGGIE_PIZZA" ingredients="EGG_PLANT, MUSHRROOMS, ONION, RED_PEPPER, GROUND">
+			</pizza>
+		</menu>
+	</store>
+</company>
