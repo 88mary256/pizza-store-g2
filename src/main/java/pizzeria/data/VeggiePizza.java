@@ -1,11 +1,5 @@
 package pizzeria.data;
 
-import static pizzeria.data.Ingredient.EGG_PLANT;
-import static pizzeria.data.Ingredient.GROUND;
-import static pizzeria.data.Ingredient.MUSHRROOMS;
-import static pizzeria.data.Ingredient.ONION;
-import static pizzeria.data.Ingredient.RED_PEPPER;
-
 /**
  * Concrete Veggie Pizza.
  *
@@ -18,11 +12,6 @@ public class VeggiePizza extends Pizza {
      */
     public VeggiePizza() {
         super(PizzaTypes.VEGGIE_PIZZA);
-        addIngredients(EGG_PLANT);
-        addIngredients(MUSHRROOMS);
-        addIngredients(ONION);
-        addIngredients(RED_PEPPER);
-        addIngredients(GROUND);
     }
 
     @Override

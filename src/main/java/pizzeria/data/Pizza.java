@@ -1,7 +1,9 @@
 package pizzeria.data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -15,7 +17,7 @@ public class Pizza {
     /**
      * Cost of base customPizza.
      */
-    private static final double CUSTOM_COST = 44.99;
+    public static final double CUSTOM_COST = 44.99;
 
     /** Type of the pizza. **/
     private final PizzaTypes type;
@@ -40,6 +42,20 @@ public class Pizza {
     public Pizza(final PizzaTypes newType) {
         this.type = newType;
         this.cost = CUSTOM_COST;
+    }
+
+    /**
+     * Method that load ingredients for pizza from the store configuration.
+     *
+     * @param storeIngredients Map<IngredientType, Ingredient>
+     * @param pizzaIngredients Collection<IngredientType>
+     */
+    public void loadIngredientsFromStore(
+            final Map<IngredientType, Ingredient> storeIngredients,
+            final Collection<IngredientType> pizzaIngredients) {
+        for (final IngredientType ingredientType : pizzaIngredients) {
+            addIngredients(storeIngredients.get(ingredientType));
+        }
     }
 
     /**

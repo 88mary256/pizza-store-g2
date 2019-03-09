@@ -1,37 +1,61 @@
 package pizzeria.data;
 
 /**
- * Enumerator for ingredients.
+ * This class is used to represent the ingredients per sucursal.
  *
- * @author David Mamamani
+ * @author Marines Lopez Soliz
  *
  */
-public enum Ingredient {
-    /** List of ingredients. */
-    TOMATOES(2), MOZZARELLA_CHEESE(8), GREEN_PEPPER(3), RED_PEPPER(3),
-    /** List of ingredients. */
-    OLIVES(6), BASIL(6), GROUND(6), MUSHRROOMS(10), ARTICHOKES(8), EGG_PLANT(8),
-    /** List of ingredients. */
-    ONION(3), PARMESAN_CHEESE(8), CALM(15);
+public class Ingredient {
 
-    /** cost for additional ingredient. **/
-    private double cost;
+    /** Ingredient Type. **/
+    private final IngredientType ingredient;
+
+    /** Cost of the ingredient per sucursal. **/
+    private final double cost;
+
+    /** Unity of the ingredient per sucursal. **/
+    private final String unity;
 
     /**
      * Default Constructor.
      *
-     * @param newCost double.
-     **/
-    Ingredient(final double newCost) {
+     * @param newIngredient IngredientType
+     * @param newCost       double
+     * @param newUnity      String, e.g. 8km
+     */
+    public Ingredient(final IngredientType newIngredient, final double newCost,
+            final String newUnity) {
+        this.ingredient = newIngredient;
         this.cost = newCost;
+        this.unity = newUnity;
     }
 
     /**
-     * Getter of the cost.
+     * Getter.
      *
-     * @return cost double.
-     **/
+     * @return ingredient type
+     */
+    public IngredientType getIngredient() {
+        return ingredient;
+    }
+
+    /**
+     * Getter.
+     *
+     * @return cost
+     */
     public double getCost() {
         return cost;
     }
+
+    /**
+     * Getter.
+     *
+     * @return unity
+     */
+    public String getUnity() {
+        return unity;
+    }
+
 }
