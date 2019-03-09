@@ -14,7 +14,11 @@ public class Company {
     public Company() {
     }
 
-    /** Add store to company. **/
+    /**
+     * Add store to company.
+     *
+     * @param store pizzaStore
+     */
     public void addStore(final PizzaStore store) {
         stores.add(store);
     }

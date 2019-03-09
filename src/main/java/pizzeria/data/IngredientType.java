@@ -22,8 +22,9 @@ public enum IngredientType {
      */
     public static IngredientType get(final String typeName) {
         for (final IngredientType ingredientType : IngredientType.values()) {
-            if (ingredientType.name().equalsIgnoreCase(typeName.trim()))
+            if (ingredientType.name().equalsIgnoreCase(typeName.trim())) {
                 return ingredientType;
+            }
         }
         return null;
     }

@@ -67,7 +67,11 @@ public class PizzaStore {
         return new Billing(totalCost, pizzas);
     }
 
-    /** Getter of store name. **/
+    /**
+     * Getter of store name.
+     *
+     * @return name
+     **/
     public String getName() {
         return this.name;
     }

@@ -32,6 +32,7 @@ public class PizzaStoreTests {
     /** store. **/
     private PizzaStore store;
 
+    /** Method to initialice test suit data. **/
     @Before
     public void before() {
         final Company company = XmlParser

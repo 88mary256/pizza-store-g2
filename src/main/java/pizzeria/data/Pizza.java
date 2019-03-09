@@ -44,7 +44,12 @@ public class Pizza {
         this.cost = CUSTOM_COST;
     }
 
-    /** Method that load ingredients for pizza from the store configuration. **/
+    /**
+     * Method that load ingredients for pizza from the store configuration.
+     *
+     * @param storeIngredients Map<IngredientType, Ingredient>
+     * @param pizzaIngredients Collection<IngredientType>
+     */
     public void loadIngredientsFromStore(
             final Map<IngredientType, Ingredient> storeIngredients,
             final Collection<IngredientType> pizzaIngredients) {

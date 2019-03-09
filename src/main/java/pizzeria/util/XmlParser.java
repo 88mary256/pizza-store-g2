@@ -29,11 +29,15 @@ import pizzeria.data.PizzaTypes;
  * @author Marines Lopez Soliz
  *
  */
-public class XmlParser {
+public final class XmlParser {
+
+    /** Default constructor. **/
+    private XmlParser() {
+    }
 
     /**
      * Create company from xml file.
-     * 
+     *
      * @param fileName string
      * @return company
      */
@@ -50,39 +54,11 @@ public class XmlParser {
                 final Node node = nodeList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     final Element elem = (Element) node;
-                    final String storeName = node.getAttributes()
-                            .getNamedItem("name").getNodeValue();
-
-                    final Map<IngredientType, Ingredient> ingredientsPerStore = new HashMap<IngredientType, Ingredient>();
-                    final NodeList ingredientList = elem
-                            .getElementsByTagName("ingredients").item(0)
-                            .getChildNodes();
-                    for (int j = 0; j < ingredientList.getLength(); j++) {
-                        final Node nodeIngredient = ingredientList.item(j);
-                        final IngredientType type = getIngredientType(
-                                nodeIngredient);
-                        final double cost = Double
-                                .parseDouble(node.getAttributes()
-                                        .getNamedItem("name").getNodeValue());
-                        final String unity = node.getAttributes()
-                                .getNamedItem("unity").getNodeValue();
-                        addIngredient(ingredientsPerStore, type, cost, unity);
-                    }
-
-                    final Map<PizzaTypes, Collection<IngredientType>> pizzaIngredientTypes = new HashMap<PizzaTypes, Collection<IngredientType>>();
-                    final NodeList menu = elem.getElementsByTagName("menu")
-                            .item(0).getChildNodes();
-                    for (int j = 0; j < menu.getLength(); j++) {
-                        final Collection<IngredientType> ingredientTypes = new ArrayList<IngredientType>();
-                        final Node nodePizza = menu.item(j);
-                        final PizzaTypes pizzaType = getPizzaType(nodePizza);
-                        final String ingredientNames = node.getAttributes()
-                                .getNamedItem("ingredients").getNodeValue();
-                        for (final String iname : ingredientNames.split(",")) {
-                            ingredientTypes.add(IngredientType.get(iname));
-                        }
-                        pizzaIngredientTypes.put(pizzaType, ingredientTypes);
-                    }
+                    final String storeName = getValue(node, "name");
+                    final Map<IngredientType, Ingredient> ingredientsPerStore
+                            = loadIngredients(node, elem);
+                    final Map<PizzaTypes, Collection<IngredientType>>
+                            pizzaIngredientTypes = loadMenu(node, elem);
                     final PizzaStore store = new PizzaStore(storeName,
                             ingredientsPerStore, pizzaIngredientTypes);
                     company.addStore(store);
@@ -96,14 +72,85 @@ public class XmlParser {
     }
 
     /**
+     * Load menu from Element.
+     *
+     * @param node xml node
+     * @param elem xml Element
+     * @return map with ingredient types per pizza type
+     */
+    private static Map<PizzaTypes, Collection<IngredientType>> loadMenu(
+            final Node node, final Element elem) {
+        final Map<PizzaTypes, Collection<IngredientType>> pizzaIngredientTypes
+                = new HashMap<PizzaTypes, Collection<IngredientType>>();
+        final NodeList menu = getChilds(elem, "menu");
+        for (int j = 0; j < menu.getLength(); j++) {
+            final Collection<IngredientType> ingredientTypes
+                    = new ArrayList<IngredientType>();
+            final Node nodePizza = menu.item(j);
+            final PizzaTypes pizzaType = getPizzaType(nodePizza);
+            final String ingredientNames = getValue(node, "ingredients");
+            for (final String iname : ingredientNames.split(",")) {
+                ingredientTypes.add(IngredientType.get(iname));
+            }
+            pizzaIngredientTypes.put(pizzaType, ingredientTypes);
+        }
+        return pizzaIngredientTypes;
+    }
+
+    /**
+     * Load ingredients from Element.
+     *
+     * @param node xml node
+     * @param elem xml element
+     * @return map with Ingredient per ingredient type
+     */
+    private static Map<IngredientType, Ingredient> loadIngredients(
+            final Node node, final Element elem) {
+
+        final Map<IngredientType, Ingredient> ingredientsPerStore
+                = new HashMap<IngredientType, Ingredient>();
+        final NodeList ingredientList = getChilds(elem, "ingredients");
+        for (int j = 0; j < ingredientList.getLength(); j++) {
+            final Node nodeIngredient = ingredientList.item(j);
+            final IngredientType type = getIngredientType(nodeIngredient);
+            final double cost = Double.parseDouble(getValue(node, "name"));
+            final String unity = getValue(node, "unity");
+            addIngredient(ingredientsPerStore, type, cost, unity);
+        }
+        return ingredientsPerStore;
+    }
+
+    /**
+     * Get child nodes of a node with tagName.
+     *
+     * @param elem xml element
+     * @param tagName string
+     * @return NodeList
+     */
+    private static NodeList getChilds(final Element elem,
+            final String tagName) {
+        return elem.getElementsByTagName(tagName).item(0).getChildNodes();
+    }
+
+    /**
+     * Get string value of a node with name id "name".
+     *
+     * @param node xml node
+     * @param name string node name
+     * @return String value
+     */
+    private static String getValue(final Node node, final String name) {
+        return node.getAttributes().getNamedItem(name).getNodeValue();
+    }
+
+    /**
      * Get ingredient type from xml node.
      *
      * @param node xml node
      * @return IngredientType
      */
     private static IngredientType getIngredientType(final Node node) {
-        final String stringType = node.getAttributes().getNamedItem("type")
-                .getNodeValue();
+        final String stringType = getValue(node, "type");
         return IngredientType.get(stringType);
     }
 
@@ -114,8 +161,7 @@ public class XmlParser {
      * @return PizzaTypes
      */
     private static PizzaTypes getPizzaType(final Node node) {
-        final String stringType = node.getAttributes().getNamedItem("type")
-                .getNodeValue();
+        final String stringType = getValue(node, "type");
         return PizzaTypes.get(stringType);
     }
 
