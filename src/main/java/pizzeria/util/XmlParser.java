@@ -87,12 +87,15 @@ public final class XmlParser {
             final Collection<IngredientType> ingredientTypes
                     = new ArrayList<IngredientType>();
             final Node nodePizza = menu.item(j);
-            final PizzaTypes pizzaType = getPizzaType(nodePizza);
-            final String ingredientNames = getValue(node, "ingredients");
-            for (final String iname : ingredientNames.split(",")) {
-                ingredientTypes.add(IngredientType.get(iname));
+            if (nodePizza.getNodeType() == Node.ELEMENT_NODE) {
+                final PizzaTypes pizzaType = getPizzaType(nodePizza);
+                final String ingredientNames = getValue(nodePizza,
+                        "ingredients");
+                for (final String iname : ingredientNames.split(",")) {
+                    ingredientTypes.add(IngredientType.get(iname));
+                }
+                pizzaIngredientTypes.put(pizzaType, ingredientTypes);
             }
-            pizzaIngredientTypes.put(pizzaType, ingredientTypes);
         }
         return pizzaIngredientTypes;
     }
@@ -112,10 +115,13 @@ public final class XmlParser {
         final NodeList ingredientList = getChilds(elem, "ingredients");
         for (int j = 0; j < ingredientList.getLength(); j++) {
             final Node nodeIngredient = ingredientList.item(j);
-            final IngredientType type = getIngredientType(nodeIngredient);
-            final double cost = Double.parseDouble(getValue(node, "name"));
-            final String unity = getValue(node, "unity");
-            addIngredient(ingredientsPerStore, type, cost, unity);
+            if (nodeIngredient.getNodeType() == Node.ELEMENT_NODE) {
+                final IngredientType type = getIngredientType(nodeIngredient);
+                final double cost = Double
+                        .parseDouble(getValue(nodeIngredient, "cost"));
+                final String unity = getValue(nodeIngredient, "unity");
+                addIngredient(ingredientsPerStore, type, cost, unity);
+            }
         }
         return ingredientsPerStore;
     }
@@ -123,7 +129,7 @@ public final class XmlParser {
     /**
      * Get child nodes of a node with tagName.
      *
-     * @param elem xml element
+     * @param elem    xml element
      * @param tagName string
      * @return NodeList
      */

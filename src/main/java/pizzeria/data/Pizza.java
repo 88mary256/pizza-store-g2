@@ -17,7 +17,7 @@ public class Pizza {
     /**
      * Cost of base customPizza.
      */
-    private static final double CUSTOM_COST = 44.99;
+    public static final double CUSTOM_COST = 44.99;
 
     /** Type of the pizza. **/
     private final PizzaTypes type;

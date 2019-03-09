@@ -15,6 +15,7 @@ import org.junit.Test;
 import pizzeria.data.CalmPizza;
 import pizzeria.data.CheesePizza;
 import pizzeria.data.GreekPizza;
+import pizzeria.data.Ingredient;
 import pizzeria.data.PepperoniPizza;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
@@ -96,12 +97,43 @@ public class PizzaStoreTests {
         order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
         order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
         final int amountOfPizzas = 4;
-        final int sizeOfPrice = 6;
+        final int sizeOfPrice = 8;
 
         final Billing billing = store.orderPizza(order);
-        assertEquals(String.valueOf(billing.getTotalCost()).substring(0,
-                sizeOfPrice), "306.96");
+        assertEquals(
+                String.valueOf(billing.getTotalCost()).substring(0,
+                        sizeOfPrice),
+                String.valueOf(getBillingCost(billing)).substring(0,
+                        sizeOfPrice));
         assertEquals(billing.getPizzas().size(), amountOfPizzas);
+    }
+
+    /**
+     * Get cost of a billing.
+     *
+     * @param bill billing
+     * @return cost of the billing
+     */
+    private double getBillingCost(final Billing bill) {
+        double cost = 0;
+        for (final Pizza pizza : bill.getPizzas()) {
+            cost += getCost(pizza);
+        }
+        return cost;
+    }
+
+    /**
+     * Get cost of a pizza.
+     *
+     * @param pizza pizza
+     * @return cost of a pizza
+     */
+    private double getCost(final Pizza pizza) {
+        double cost = Pizza.CUSTOM_COST;
+        for (final Ingredient ingredient : pizza.getIngredients()) {
+            cost += ingredient.getCost();
+        }
+        return cost;
     }
 
     /**
@@ -122,5 +154,4 @@ public class PizzaStoreTests {
         assertTrue(billing.getPizzas()
                 .get(billing.getPizzas().size() - 1) instanceof GreekPizza);
     }
-
 }
