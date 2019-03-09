@@ -30,7 +30,7 @@ public class Company {
      * @return pizza store
      */
     public PizzaStore getStore(final int i) {
-        return this.getStore(i);
+        return this.stores.get(i);
     }
 
     /**
