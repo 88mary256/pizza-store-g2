@@ -5,6 +5,7 @@ import java.util.List;
 
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
+import pizzeria.gui.Frame;
 import pizzeria.util.XmlParser;
 
 /**
@@ -26,7 +27,7 @@ public final class Cliente {
      * @param args arguments of console execution.
      */
     public static void main(final String[] args) {
-        final Company company = XmlParser
+        /*final Company company = XmlParser
                 .getCompany("resources/loadStores.xml");
         final PizzaStore store = company.getStore(0);
 
@@ -42,6 +43,7 @@ public final class Cliente {
 
         final Billing billing = store.orderPizza(order);
         System.out.println(billing.getTotalCost());
-        System.out.println(billing.getPizzas());
+        System.out.println(billing.getPizzas());*/
+        Frame interfaz = new Frame();
     }
 }
