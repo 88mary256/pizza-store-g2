@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/** Class to represent the company, that contains multiple sucursales. **/
+/** Class to represent the company, that contains multiple stores. **/
 public class Company {
 
     /** Store list. **/
@@ -24,9 +24,9 @@ public class Company {
     }
 
     /**
-     * Method that get a sucursal.
+     * Method that get a store.
      *
-     * @param i position in the sucursal list
+     * @param i position in the store list
      * @return pizza store
      */
     public PizzaStore getStore(final int i) {
@@ -34,7 +34,7 @@ public class Company {
     }
 
     /**
-     * Method that get a sucursal.
+     * Method that get a store.
      *
      * @param name store name
      * @return pizza store
