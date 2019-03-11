@@ -6,15 +6,27 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+/**
+ * Frame of work.
+ * 
+ * @author Admin
+ *
+ */
 public class Frame extends JFrame {
+
+    /**
+     * Default constructor.
+     */
+    static final int EIGHT = 8;
+    static final int TWO = 2;
+    static final int FOUR = 4;
 
     public Frame() {
         final Toolkit myScreen = Toolkit.getDefaultToolkit();
         final Dimension sizeScreen = myScreen.getScreenSize();
-        setBounds(sizeScreen.width / 8, sizeScreen.height / 8,
-                sizeScreen.width / 2, sizeScreen.height / 4);
+        setBounds(sizeScreen.width / EIGHT, sizeScreen.height / EIGHT,
+                sizeScreen.width / TWO, sizeScreen.height / FOUR);
         setResizable(true);
-        // setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Jala Pizza Co.");

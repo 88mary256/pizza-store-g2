@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -26,17 +25,19 @@ import pizzeria.util.XmlParser;
 
 /**
  * Displayed main panel.
- * 
+ *
  * @author Admin
  *
  */
 public class Paneles extends JPanel implements ActionListener {
-    JButton submitOrdenButton = new JButton("Registrar Orden");
-    JButton addPizzaButton = new JButton("Add Pizza");
-    JButton addIngredientButton = new JButton("Add Ingredient");
-    JComboBox pizzaSelectionTypes;
-    ImageIcon[] images;
-    JTextField quantityField;
+    private final JButton submitOrdenButton = new JButton("Registrar Orden");
+    private final JButton addPizzaButton = new JButton("Add Pizza");
+    private final JButton addIngredientButton = new JButton("Add Ingredient");
+    private JComboBox pizzaSelectionTypes;
+    private JComboBox ingredients;
+    private JTextField quantityField;
+    static final int TEN = 10;
+    static final int ZERO = 0;
 
     /**
      * Default constructor.
@@ -46,35 +47,35 @@ public class Paneles extends JPanel implements ActionListener {
         /** Setting layout. */
         setBackground(SystemColor.window);
         // setLayout(new FlowLayout(FlowLayout.RIGHT));
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout(TEN, TEN));
 
         /** Setting North layout. */
         final JLabel pizzaListTitleLabel = new JLabel("Available pizzas ");
         final JLabel quantityLabel = new JLabel("Number of pizzas : ");
         quantityLabel.setVisible(true);
         final JTextField quantityField = new JTextField();
-        quantityField.setSize(10, 10);
+        quantityField.setSize(TEN, TEN);
         quantityField.setVisible(true);
-        final JComboBox pizzaTypeSelection = new JComboBox();
-        pizzaTypeSelection
+        final JComboBox pizzaSelectionTypes = new JComboBox();
+        pizzaSelectionTypes
                 .setModel(new DefaultComboBoxModel(PizzaTypes.values()));
-        pizzaTypeSelection.setSelectedIndex(0);
-        pizzaTypeSelection.addActionListener(this);
+        pizzaSelectionTypes.setSelectedIndex(ZERO);
+        pizzaSelectionTypes.addActionListener(this);
         final JPanel northPanel = new JPanel();
         northPanel.setLayout(new GridLayout(1, 5));
         northPanel.add(pizzaListTitleLabel);
         northPanel.add(quantityLabel);
         northPanel.add(quantityField);
-        northPanel.add(pizzaTypeSelection);
+        northPanel.add(pizzaSelectionTypes);
         northPanel.add(addPizzaButton);
         add(northPanel, BorderLayout.NORTH);
 
         /** Setting West layout. */
 
-        final JComboBox Ingredients = new JComboBox();
-        Ingredients.setModel(new DefaultComboBoxModel(IngredientType.values()));
-        Ingredients.setSelectedIndex(0);
-        Ingredients.addActionListener(this);
+        final JComboBox ingredients = new JComboBox();
+        ingredients.setModel(new DefaultComboBoxModel(IngredientType.values()));
+        ingredients.setSelectedIndex(ZERO);
+        ingredients.addActionListener(this);
         final JPanel westPanel = new JPanel();
         final JLabel ingredientsListTitleLabel = new JLabel(
                 "List of extra ingredients. ");
@@ -85,7 +86,7 @@ public class Paneles extends JPanel implements ActionListener {
         westPanel.add(ingredientsListTitleLabel);
         westPanel.add(ingredientsListTitleLabel);
         westPanel.add(ingredientsListSubTitleLabel);
-        westPanel.add(Ingredients);
+        westPanel.add(ingredients);
         westPanel.add(addIngredientButton);
         add(westPanel, BorderLayout.WEST);
 
@@ -116,24 +117,25 @@ public class Paneles extends JPanel implements ActionListener {
         final ArrayList<OrderItem> order = new ArrayList<OrderItem>();
         /** Identify action to execute based on clicked button. */
         if (whichButton == addPizzaButton) {
-            final String test = pizzaSelectionTypes.getSelectedItem()
+            final String pizzaSelected = pizzaSelectionTypes.getSelectedItem()
                     .toString();
             final OrderItem currentOrder = new OrderItem(
                     Integer.parseInt(quantityField.getText()),
-                    PizzaTypes.valueOf(test));
+                    PizzaTypes.valueOf(pizzaSelected));
             order.add(currentOrder);
-            System.out.println(test);
+            System.out.println(pizzaSelected);
             System.out.println("Item Added");
         } else if (whichButton == addIngredientButton) {
-            final String test = pizzaSelectionTypes.getSelectedItem()
+            final String ingredientSelected = ingredients.getSelectedItem()
                     .toString();
-            final OrderItem currentOrder = new OrderItem(1,
-                    PizzaTypes.valueOf(test));
+            final OrderItem currentOrder = new OrderItem(
+                    Integer.parseInt(quantityField.getText()),
+                    PizzaTypes.valueOf(ingredientSelected));
             order.add(currentOrder);
-            System.out.println(test);
+            System.out.println(ingredientSelected);
             System.out.println("Item Added");
         } else if (whichButton == submitOrdenButton) {
-            final PizzaStore store = company.getStore(0);
+            final PizzaStore store = company.getStore(ZERO);
             final Billing billing = store.orderPizza(order);
             System.out.println(billing.getTotalCost());
             System.out.println(billing.getPizzas());
