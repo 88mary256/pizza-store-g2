@@ -58,4 +58,9 @@ public class Ingredient {
         return unity;
     }
 
+    /** Customized toString method. **/
+    @Override
+    public String toString() {
+        return ingredient.name();
+    }
 }

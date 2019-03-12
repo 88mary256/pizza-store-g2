@@ -16,23 +16,4 @@ public class CalmPizza extends Pizza {
     public CalmPizza() {
         super(PizzaTypes.CALM_PIZZA);
     }
-
-    @Override
-    public void prepare() {
-
-    }
-
-    @Override
-    public void bake() {
-
-    }
-
-    @Override
-    public void cut() {
-
-    }
-
-    @Override
-    public void box() {
-    }
 }

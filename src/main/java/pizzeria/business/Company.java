@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Company {
 
     /** Store list. **/
-    private final List<PizzaStore> stores = new ArrayList<PizzaStore>();
+    private final List<Store> stores = new ArrayList<Store>();
 
     /** Default constructor. **/
     public Company() {
@@ -19,7 +19,7 @@ public class Company {
      *
      * @param store pizzaStore
      */
-    public void addStore(final PizzaStore store) {
+    public void addStore(final Store store) {
         stores.add(store);
     }
 
@@ -29,7 +29,7 @@ public class Company {
      * @param i position in the store list
      * @return pizza store
      */
-    public PizzaStore getStore(final int i) {
+    public Store getStore(final int i) {
         return this.stores.get(i);
     }
 
@@ -39,7 +39,7 @@ public class Company {
      * @param name store name
      * @return pizza store
      */
-    public PizzaStore getStore(final String name) {
+    public Store getStore(final String name) {
         return this.stores.stream()
                 .filter(s -> s.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList()).get(0);

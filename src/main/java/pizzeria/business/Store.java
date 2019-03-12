@@ -1,21 +1,22 @@
 package pizzeria.business;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import pizzeria.data.Ingredient;
 import pizzeria.data.IngredientType;
+import pizzeria.data.Lasania;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
+import pizzeria.data.ProductType;
 
 /**
  * Class to represent a store of pizzas or pizzeria.
  *
  * @author Marines Lopez Soliz
  */
-public class PizzaStore {
+public class Store {
 
     /** Store name. **/
     private final String name;
@@ -30,7 +31,7 @@ public class PizzaStore {
      * @param newIngredients store ingredient collection.
      * @param newMenuDetail  ingredient types of a pizza type per store.
      */
-    public PizzaStore(final String newName,
+    public Store(final String newName,
             final Map<IngredientType, Ingredient> newIngredients,
             final Map<PizzaTypes, Collection<IngredientType>> newMenuDetail) {
         this.name = newName;
@@ -53,18 +54,30 @@ public class PizzaStore {
      * @param order List<OrderItems>
      * @return billing
      */
-    public Billing orderPizza(final List<OrderItem> order) {
-        double totalCost = 0;
-        final List<Pizza> pizzas = new ArrayList<Pizza>();
-        for (final OrderItem orderItem : order) {
-            final Pizza pizza = factory.createPizza(orderItem.getType());
-            System.out.println(pizza);
-            for (int i = 0; i < orderItem.getQuantity(); i++) {
-                pizzas.add(pizza);
+    public Billing orderProducts(final List<OrderItem> order) {
+        final Billing billing = new Billing();
+        for (final OrderItem item : order) {
+            if (item.getProductType() == ProductType.PIZZA) {
+                final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
+                final Pizza pizza = factory.createPizza(
+                        orderPizzaItem.getPizzaType(),
+                        orderPizzaItem.getAdditionalIngredients(),
+                        orderPizzaItem.getRemovedIngredients());
+                billing.addProduct(item.getQuantity(), pizza);
+            } else if (item.getProductType() == ProductType.LASANIA) {
+                billing.addProduct(item.getQuantity(), orderLasania());
             }
-            totalCost += orderItem.getQuantity() * pizza.getCost();
         }
-        return new Billing(totalCost, pizzas);
+        return billing;
+    }
+
+    /**
+     * Create a product Lasania.
+     *
+     * @return Lasania
+     */
+    public Lasania orderLasania() {
+        return new Lasania();
     }
 
     /**
