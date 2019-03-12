@@ -44,4 +44,8 @@ public class Company {
                 .filter(s -> s.getName().equalsIgnoreCase(name))
                 .collect(Collectors.toList()).get(0);
     }
+
+    public List<Store> getStores() {
+        return this.stores;
+    }
 }
