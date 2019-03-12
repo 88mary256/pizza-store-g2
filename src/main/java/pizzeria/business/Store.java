@@ -61,7 +61,8 @@ public class Store {
         final List<Product> products = new ArrayList<Product>();
         for (final OrderItem orderItem : order) {
             if (orderItem.getProductType() == ProductType.PIZZA) {
-                final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) orderItem;
+                final OrderPizzaItem orderPizzaItem
+                        = (OrderPizzaItem) orderItem;
                 final Pizza pizza = factory.createPizza(
                         orderPizzaItem.getPizzaType(),
                         orderPizzaItem.getAdditionalIngredients(),
@@ -92,7 +93,7 @@ public class Store {
     }
 
     /**
-     * Create a product Lasania
+     * Create a product Lasania.
      *
      * @return Lasania
      */

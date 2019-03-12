@@ -101,8 +101,10 @@ public class PizzaStoreTests {
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
         final int amountOfPizzas = 4;
         final int sizeOfPrice = 8;
-
         final Billing billing = store.orderProducts(order);
+        System.out.println("billing: " + billing.getTotalCost());
+        System.out.println("billing: " + getBillingCost(billing));
+
         assertEquals(
                 String.valueOf(billing.getTotalCost()).substring(0,
                         sizeOfPrice),
@@ -141,8 +143,9 @@ public class PizzaStoreTests {
             return cost;
         } else if (product.getProductType() == ProductType.LASANIA) {
             return Lasania.LASANIA_COST;
-        } else
+        } else {
             return 0;
+        }
     }
 
     /**

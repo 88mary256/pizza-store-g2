@@ -8,7 +8,10 @@ package pizzeria.data;
  */
 public class Product {
 
+    /** Type of Product. **/
     protected ProductType productType;
+
+    /** Cost of product. **/
     protected double cost;
 
     /**
@@ -20,6 +23,11 @@ public class Product {
         return cost;
     }
 
+    /**
+     * Getter of the product type.
+     *
+     * @return ProductType.
+     */
     public ProductType getProductType() {
         return productType;
     }

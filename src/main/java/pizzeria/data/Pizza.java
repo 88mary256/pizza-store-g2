@@ -37,6 +37,7 @@ public class Pizza extends Product {
      * @param newType This is the type.
      */
     public Pizza(final PizzaTypes newType) {
+        this.productType = ProductType.PIZZA;
         this.type = newType;
         this.cost = CUSTOM_COST;
     }
