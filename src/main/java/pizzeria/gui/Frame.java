@@ -8,19 +8,21 @@ import javax.swing.JFrame;
 
 /**
  * Frame of work.
- * 
+ *
  * @author Admin
  *
  */
 public class Frame extends JFrame {
-
     /**
-     * Default constructor.
+     * Magic number fix.
      */
     static final int EIGHT = 8;
     static final int TWO = 2;
     static final int FOUR = 4;
 
+    /**
+     * Default constructor.
+     */
     public Frame() {
         final Toolkit myScreen = Toolkit.getDefaultToolkit();
         final Dimension sizeScreen = myScreen.getScreenSize();
