@@ -13,24 +13,4 @@ public class CheesePizza extends Pizza {
     public CheesePizza() {
         super(PizzaTypes.CHEESE_PIZZA);
     }
-
-    @Override
-    public void prepare() {
-
-    }
-
-    @Override
-    public void bake() {
-
-    }
-
-    @Override
-    public void cut() {
-
-    }
-
-    @Override
-    public void box() {
-
-    }
 }

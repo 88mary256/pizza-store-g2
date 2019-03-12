@@ -1,30 +1,30 @@
 package pizzeria.business;
 
-import pizzeria.data.PizzaTypes;
+import pizzeria.data.ProductType;
 
 /**
- * This class represent a order item that have the quantity and pizza type.
+ * This class represent a order item that have the quantity and product type.
  *
  * @author Marines Lopez Soliz
  */
 public class OrderItem {
 
-    /** Quantity of pizzas. **/
+    /** Quantity of product. **/
     private int quantity;
 
-    /** Type of pizza. **/
-    private PizzaTypes type;
+    /** Type of product. **/
+    private ProductType productType;
 
     /**
      * Parameterized constructor.
      *
      * @param newQuantity int
-     * @param newType     PizzaType
+     * @param newType     ProductType
      */
-    public OrderItem(final int newQuantity, final PizzaTypes newType) {
+    public OrderItem(final int newQuantity, final ProductType newType) {
         super();
         this.quantity = newQuantity;
-        this.type = newType;
+        this.productType = newType;
     }
 
     /**
@@ -46,20 +46,20 @@ public class OrderItem {
     }
 
     /**
-     * Getter of Pizza Type.
+     * Getter of product Type.
      *
-     * @return pizza type
+     * @return product type
      */
-    public PizzaTypes getType() {
-        return type;
+    public ProductType getProductType() {
+        return productType;
     }
 
     /**
-     * Setter of Pizza Type.
+     * Setter of product type.
      *
-     * @param newType PizzaType
+     * @param newType ProductType
      */
-    public void setType(final PizzaTypes newType) {
-        this.type = newType;
+    public void setProductType(final ProductType newType) {
+        this.productType = newType;
     }
 }

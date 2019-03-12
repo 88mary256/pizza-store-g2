@@ -2,19 +2,20 @@
 <company>
 	<store name="Sucursal 1">
 		<ingredients>
-			<ingredient type="TOMATOES" cost=2 unity="250gr"/>
-			<ingredient type="GREEN_PEPPER" cost=3 unity="100gr"/>
-			<ingredient type="RED_PEPPER" cost=3 unity="100gr"/>
-			<ingredient type="ONION" cost=3 unity="500gr"/>
-			<ingredient type="OLIVES" cost=6 unity="6"/>
-			<ingredient type="BASIL" cost=6 unity="500gr"/>
-			<ingredient type="GROUND" cost=6 unity="500gr"/>
-			<ingredient type="MOZZARELLA_CHEESE" cost=8 unity="500gr"/>
-			<ingredient type="PARMESAN_CHEESE" cost=8 unity="500gr"/>
-			<ingredient type="ARTICHOKES" cost=8 unity="500gr"/>
-			<ingredient type="EGG_PLANT" cost=8 unity="500gr"/>
-			<ingredient type="MUSHRROOMS" cost=10 unity="500gr"/>
-			<ingredient type="CALM" cost=15 unity="500gr"/>
+			<ingredient type="TOMATOES" cost="2" unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost="3" unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost="3" unity="100gr"/>
+			<ingredient type="ONION" cost="3" unity="500gr"/>
+			<ingredient type="OLIVES" cost="6" unity="6"/>
+			<ingredient type="BASIL" cost="6" unity="500gr"/>
+			<ingredient type="GROUND" cost="6" unity="500gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost="8" unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost="8" unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost="8" unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost="8" unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost="10" unity="500gr"/>
+			<ingredient type="CALM" cost="15" unity="500gr"/>
+			<ingredient type="PEPPERONI" cost="10" unity="500gr"/>
 		</ingredients>
 		<menu>
 			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, GREEN_PEPPER">
@@ -31,19 +32,20 @@
 	</store>
 	<store name="Sucursal 2">
 		<ingredients>
-			<ingredient type="TOMATOES" cost=3 unity="250gr"/>
-			<ingredient type="GREEN_PEPPER" cost=4 unity="100gr"/>
-			<ingredient type="RED_PEPPER" cost=4 unity="100gr"/>
-			<ingredient type="ONION" cost=4 unity="500gr"/>
-			<ingredient type="OLIVES" cost=7 unity="6"/>
-			<ingredient type="BASIL" cost=6 unity="300gr"/>
-			<ingredient type="GROUND" cost=6 unity="300gr"/>
-			<ingredient type="MOZZARELLA_CHEESE" cost=9 unity="500gr"/>
-			<ingredient type="PARMESAN_CHEESE" cost=9 unity="500gr"/>
-			<ingredient type="ARTICHOKES" cost=9 unity="500gr"/>
-			<ingredient type="EGG_PLANT" cost=9 unity="500gr"/>
-			<ingredient type="MUSHRROOMS" cost=11 unity="500gr"/>
-			<ingredient type="CALM" cost=16 unity="500gr"/>
+			<ingredient type="TOMATOES" cost="3" unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost="4" unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost="4" unity="100gr"/>
+			<ingredient type="ONION" cost="4" unity="500gr"/>
+			<ingredient type="OLIVES" cost="7" unity="6"/>
+			<ingredient type="BASIL" cost="6" unity="300gr"/>
+			<ingredient type="GROUND" cost="6" unity="300gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost="9" unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost="9" unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost="9" unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost="9" unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost="11" unity="500gr"/>
+			<ingredient type="CALM" cost="16" unity="500gr"/>
+			<ingredient type="PEPPERONI" cost="11" unity="500gr"/>
 		</ingredients>
 		<menu>
 			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, GREEN_PEPPER">
@@ -60,19 +62,20 @@
 	</store>
 	<store name="Sucursal 3">
 		<ingredients>
-			<ingredient type="TOMATOES" cost=2 unity="250gr"/>
-			<ingredient type="GREEN_PEPPER" cost=3 unity="100gr"/>
-			<ingredient type="RED_PEPPER" cost=3 unity="100gr"/>
-			<ingredient type="ONION" cost=3 unity="500gr"/>
-			<ingredient type="OLIVES" cost=6 unity="6"/>
-			<ingredient type="BASIL" cost=6 unity="500gr"/>
-			<ingredient type="GROUND" cost=6 unity="500gr"/>
-			<ingredient type="MOZZARELLA_CHEESE" cost=8 unity="500gr"/>
-			<ingredient type="PARMESAN_CHEESE" cost=8 unity="500gr"/>
-			<ingredient type="ARTICHOKES" cost=8 unity="500gr"/>
-			<ingredient type="EGG_PLANT" cost=8 unity="500gr"/>
-			<ingredient type="MUSHRROOMS" cost=10 unity="500gr"/>
-			<ingredient type="CALM" cost=15 unity="500gr"/>
+			<ingredient type="TOMATOES" cost="2" unity="250gr"/>
+			<ingredient type="GREEN_PEPPER" cost="3" unity="100gr"/>
+			<ingredient type="RED_PEPPER" cost="3" unity="100gr"/>
+			<ingredient type="ONION" cost="3" unity="500gr"/>
+			<ingredient type="OLIVES" cost="6" unity="6"/>
+			<ingredient type="BASIL" cost="6" unity="500gr"/>
+			<ingredient type="GROUND" cost="6" unity="500gr"/>
+			<ingredient type="MOZZARELLA_CHEESE" cost="8" unity="500gr"/>
+			<ingredient type="PARMESAN_CHEESE" cost="8" unity="500gr"/>
+			<ingredient type="ARTICHOKES" cost="8" unity="500gr"/>
+			<ingredient type="EGG_PLANT" cost="8" unity="500gr"/>
+			<ingredient type="MUSHRROOMS" cost="10" unity="500gr"/>
+			<ingredient type="CALM" cost="15" unity="500gr"/>
+			<ingredient type="PEPPERONI" cost="10" unity="500gr"/>
 		</ingredients>
 		<menu>
 			<pizza type="CHEESE_PIZZA" ingredients="PARMESAN_CHEESE, MOZZARELLA_CHEESE, OLIVES">

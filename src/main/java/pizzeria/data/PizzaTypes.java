@@ -20,8 +20,9 @@ public enum PizzaTypes {
      */
     public static PizzaTypes get(final String typeName) {
         for (final PizzaTypes ingredientType : PizzaTypes.values()) {
-            if (ingredientType.name().equalsIgnoreCase(typeName.trim()))
+            if (ingredientType.name().equalsIgnoreCase(typeName.trim())) {
                 return ingredientType;
+            }
         }
         return null;
     }

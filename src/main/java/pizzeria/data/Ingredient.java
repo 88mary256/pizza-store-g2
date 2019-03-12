@@ -1,7 +1,7 @@
 package pizzeria.data;
 
 /**
- * This class is used to represent the ingredients per sucursal.
+ * This class is used to represent the ingredients per store.
  *
  * @author Marines Lopez Soliz
  *
@@ -11,10 +11,10 @@ public class Ingredient {
     /** Ingredient Type. **/
     private final IngredientType ingredient;
 
-    /** Cost of the ingredient per sucursal. **/
+    /** Cost of the ingredient per store. **/
     private final double cost;
 
-    /** Unity of the ingredient per sucursal. **/
+    /** Unity of the ingredient per store. **/
     private final String unity;
 
     /**
