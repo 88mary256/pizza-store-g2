@@ -16,9 +16,12 @@ import pizzeria.data.CalmPizza;
 import pizzeria.data.CheesePizza;
 import pizzeria.data.GreekPizza;
 import pizzeria.data.Ingredient;
+import pizzeria.data.Lasania;
 import pizzeria.data.PepperoniPizza;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
+import pizzeria.data.Product;
+import pizzeria.data.ProductType;
 import pizzeria.data.VeggiePizza;
 import pizzeria.util.XmlParser;
 
@@ -31,7 +34,7 @@ import pizzeria.util.XmlParser;
 public class PizzaStoreTests {
 
     /** store. **/
-    private PizzaStore store;
+    private Store store;
 
     /** Method to initialice test suit data. **/
     @Before
@@ -93,19 +96,19 @@ public class PizzaStoreTests {
     @Test
     public void pizzaStoreOrderGroupOfPizzasBilling() {
         final List<OrderItem> order = new ArrayList<OrderItem>();
-        order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
-        order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
-        order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
+        order.add(new OrderPizzaItem(2, PizzaTypes.VEGGIE_PIZZA));
+        order.add(new OrderPizzaItem(1, PizzaTypes.CHEESE_PIZZA));
+        order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
         final int amountOfPizzas = 4;
         final int sizeOfPrice = 8;
 
-        final Billing billing = store.orderPizza(order);
+        final Billing billing = store.orderProducts(order);
         assertEquals(
                 String.valueOf(billing.getTotalCost()).substring(0,
                         sizeOfPrice),
                 String.valueOf(getBillingCost(billing)).substring(0,
                         sizeOfPrice));
-        assertEquals(billing.getPizzas().size(), amountOfPizzas);
+        assertEquals(billing.getProducts().size(), amountOfPizzas);
     }
 
     /**
@@ -116,24 +119,30 @@ public class PizzaStoreTests {
      */
     private double getBillingCost(final Billing bill) {
         double cost = 0;
-        for (final Pizza pizza : bill.getPizzas()) {
-            cost += getCost(pizza);
+        for (final Product product : bill.getProducts()) {
+            cost += getCost(product);
         }
         return cost;
     }
 
     /**
-     * Get cost of a pizza.
+     * Get cost of a product.
      *
-     * @param pizza pizza
-     * @return cost of a pizza
+     * @param product product
+     * @return cost of a product
      */
-    private double getCost(final Pizza pizza) {
-        double cost = Pizza.CUSTOM_COST;
-        for (final Ingredient ingredient : pizza.getIngredients()) {
-            cost += ingredient.getCost();
-        }
-        return cost;
+    private double getCost(final Product product) {
+        if (product.getProductType() == ProductType.PIZZA) {
+            double cost = Pizza.CUSTOM_COST;
+            for (final Ingredient ingredient : ((Pizza) product)
+                    .getIngredients()) {
+                cost += ingredient.getCost();
+            }
+            return cost;
+        } else if (product.getProductType() == ProductType.LASANIA) {
+            return Lasania.LASANIA_COST;
+        } else
+            return 0;
     }
 
     /**
@@ -143,15 +152,15 @@ public class PizzaStoreTests {
     @Test
     public void pizzaStoreOrderGroupOfPizzasGetCorrectPizzaTypes() {
         final List<OrderItem> order = new ArrayList<OrderItem>();
-        order.add(new OrderItem(2, PizzaTypes.VEGGIE_PIZZA));
-        order.add(new OrderItem(1, PizzaTypes.CHEESE_PIZZA));
-        order.add(new OrderItem(1, PizzaTypes.GREEK_PIZZA));
+        order.add(new OrderPizzaItem(2, PizzaTypes.VEGGIE_PIZZA));
+        order.add(new OrderPizzaItem(1, PizzaTypes.CHEESE_PIZZA));
+        order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
 
-        final Billing billing = store.orderPizza(order);
-        assertTrue(billing.getPizzas().get(0) instanceof VeggiePizza);
-        assertTrue(billing.getPizzas().get(1) instanceof VeggiePizza);
-        assertTrue(billing.getPizzas().get(2) instanceof CheesePizza);
-        assertTrue(billing.getPizzas()
-                .get(billing.getPizzas().size() - 1) instanceof GreekPizza);
+        final Billing billing = store.orderProducts(order);
+        assertTrue(billing.getProducts().get(0) instanceof VeggiePizza);
+        assertTrue(billing.getProducts().get(1) instanceof VeggiePizza);
+        assertTrue(billing.getProducts().get(2) instanceof CheesePizza);
+        assertTrue(billing.getProducts()
+                .get(billing.getProducts().size() - 1) instanceof GreekPizza);
     }
 }

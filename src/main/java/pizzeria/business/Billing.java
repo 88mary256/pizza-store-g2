@@ -6,10 +6,10 @@ package pizzeria.business;
 import java.util.ArrayList;
 import java.util.List;
 
-import pizzeria.data.Pizza;
+import pizzeria.data.Product;
 
 /**
- * Contains the total cost of an order and the pizzas for it.
+ * Contains the total cost of an order and the products for it.
  *
  * @author Marines Lopez Soliz
  */
@@ -19,17 +19,17 @@ public class Billing {
     private double totalCost = 0;
 
     /** Pizzas list of the billing. **/
-    private List<Pizza> pizzas = new ArrayList<Pizza>();
+    private List<Product> products = new ArrayList<Product>();
 
     /**
      * Parameterized constructor.
      *
      * @param newTotalCost double
-     * @param newPizzas    List<Pizza>
+     * @param newProducts  List<Product>
      */
-    public Billing(final double newTotalCost, final List<Pizza> newPizzas) {
+    public Billing(final double newTotalCost, final List<Product> newProducts) {
         this.totalCost = newTotalCost;
-        this.pizzas = newPizzas;
+        this.products = newProducts;
     }
 
     /**
@@ -42,11 +42,11 @@ public class Billing {
     }
 
     /**
-     * Getter of pizzas.
+     * Getter of products.
      *
-     * @return pizzas
+     * @return products
      */
-    public List<Pizza> getPizzas() {
-        return pizzas;
+    public List<Product> getProducts() {
+        return products;
     }
 }

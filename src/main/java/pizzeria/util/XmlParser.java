@@ -18,7 +18,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import pizzeria.business.Company;
-import pizzeria.business.PizzaStore;
+import pizzeria.business.Store;
 import pizzeria.data.Ingredient;
 import pizzeria.data.IngredientType;
 import pizzeria.data.PizzaTypes;
@@ -59,7 +59,7 @@ public final class XmlParser {
                             = loadIngredients(node, elem);
                     final Map<PizzaTypes, Collection<IngredientType>>
                             pizzaIngredientTypes = loadMenu(node, elem);
-                    final PizzaStore store = new PizzaStore(storeName,
+                    final Store store = new Store(storeName,
                             ingredientsPerStore, pizzaIngredientTypes);
                     company.addStore(store);
                 }

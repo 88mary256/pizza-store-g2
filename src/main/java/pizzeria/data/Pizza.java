@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * Define common activities for different Pizza products.
+ * Define common variables and methods for different Pizza products.
  *
  * @author David Mamani
  *
  */
 
-public class Pizza {
+public class Pizza extends Product {
     /**
      * Cost of base customPizza.
      */
@@ -22,14 +21,12 @@ public class Pizza {
     /** Type of the pizza. **/
     private final PizzaTypes type;
 
-    /** cost of the pizza. **/
-    private double cost;
-
-    /** ingredients of a pizza. **/
+    /** Ingredients of a pizza. **/
     private final List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     /** Default Constructor. **/
     private Pizza() {
+        this.productType = ProductType.PIZZA;
         this.type = PizzaTypes.CUSTOM_PIZZA;
         this.cost = CUSTOM_COST;
     }
@@ -80,15 +77,6 @@ public class Pizza {
      * Method that box the pizza.
      */
     public void box() {
-    }
-
-    /**
-     * Getter of cost.
-     *
-     * @return cost
-     */
-    public double getCost() {
-        return cost;
     }
 
     /** Customized toString method. **/
