@@ -14,4 +14,10 @@ public class Lasania extends Product {
         this.productType = ProductType.LASANIA;
         this.cost = LASANIA_COST;
     }
+
+    /** Customized toString method. **/
+    @Override
+    public String toString() {
+        return "Lasania[cost=" + cost + "]";
+    }
 }

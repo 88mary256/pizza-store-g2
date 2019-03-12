@@ -83,7 +83,8 @@ public class Pizza extends Product {
     /** Customized toString method. **/
     @Override
     public String toString() {
-        return "Pizza " + type + " cost:" + cost;
+        return "Pizza[type=" + type + ", cost=" + cost + ", ingredients= "
+                + ingredients + "]";
     }
 
     /**

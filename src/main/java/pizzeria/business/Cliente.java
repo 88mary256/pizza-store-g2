@@ -53,6 +53,6 @@ public final class Cliente {
 
         final Billing billing = store.orderProducts(order);
         System.out.println(billing.getTotalCost());
-        System.out.println(billing.getProducts());
+        System.out.println(billing.getItems());
     }
 }
