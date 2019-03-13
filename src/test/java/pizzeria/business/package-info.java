@@ -1,5 +1,5 @@
 /**
- * This package have test suit for classes of bussines package.
+ * This package have test suit for classes of business package.
  *
  * @author Marines Lopez Soliz
  */

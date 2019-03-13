@@ -3,6 +3,8 @@ package pizzeria.gui;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -22,6 +24,7 @@ import pizzeria.util.XmlParser;
 public class SelectStoreDialog extends JDialog {
     final Company company = XmlParser.getCompany("resources/loadStores.xml");
     private final JPanel contentPanel = new JPanel();
+    private final JComboBox storeSelection = new JComboBox();
 
     /**
      * Launch the application.
@@ -60,13 +63,21 @@ public class SelectStoreDialog extends JDialog {
             getContentPane().add(buttonPane);
             {
                 final JButton okButton = new JButton("OK");
+                okButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(final ActionEvent e) {
+                        final Store store = (Store) storeSelection
+                                .getSelectedItem();
+                        final OrderDialog orderDialog = new OrderDialog(store);
+                        orderDialog.setVisible(true);
+                    }
+                });
                 okButton.setActionCommand("OK");
                 buttonPane.add(okButton);
                 getRootPane().setDefaultButton(okButton);
             }
         }
         {
-            final JComboBox storeSelection = new JComboBox();
 
             final List<Store> stores = company.getStores();
 

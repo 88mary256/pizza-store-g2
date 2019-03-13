@@ -108,4 +108,14 @@ public class Store {
     public String getName() {
         return this.name;
     }
+
+    /**
+     * Custom toString.
+     * 
+     * @return name
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
 }

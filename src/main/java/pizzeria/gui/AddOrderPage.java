@@ -6,92 +6,114 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import pizzeria.data.PizzaTypes;
+import pizzeria.data.ProductType;
 
 public class AddOrderPage extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
-
-    /**
-     * Launch the application.
-     */
-    public static void main(final String[] args) {
-        try {
-            final AddOrderPage dialog = new AddOrderPage();
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private final JLabel pizzaTypeLbl = new JLabel("Pizza Type");
+    private final JComboBox pizzaTypeCombobox = new JComboBox();
+    private final JSpinner spinner = new JSpinner();
+    private final JDialog me = this;
+    private final OrderDialog parent;
 
     /**
      * Create the dialog.
      */
-    public AddOrderPage() {
-        setBounds(100, 100, 450, 300);
+    public AddOrderPage(final OrderDialog newParent) {
+        this.parent = newParent;
+        setTitle("Add Product");
+        setBounds(100, 100, 450, 251);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
-        {
-            final JLabel lblSelectAProduct = new JLabel(
-                    "Select a product to add");
-            lblSelectAProduct.setFont(new Font("SansSerif", Font.PLAIN, 14));
-            lblSelectAProduct.setBackground(new Color(192, 192, 192));
-            lblSelectAProduct.setForeground(new Color(0, 0, 0));
-            lblSelectAProduct.setHorizontalAlignment(SwingConstants.CENTER);
-            lblSelectAProduct.setBounds(0, 6, 434, 31);
-            contentPanel.add(lblSelectAProduct);
-        }
+        final JLabel lblSelectAProduct = new JLabel("Select a product to add");
+        lblSelectAProduct.setBounds(0, 6, 434, 31);
+        lblSelectAProduct.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        lblSelectAProduct.setBackground(new Color(192, 192, 192));
+        lblSelectAProduct.setForeground(new Color(0, 0, 0));
+        lblSelectAProduct.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPanel.add(lblSelectAProduct);
 
         final JComboBox comboBox = new JComboBox();
-        comboBox.setModel(new DefaultComboBoxModel(PizzaTypes.values()));
-        comboBox.setBounds(180, 58, 202, 20);
+        comboBox.setBounds(124, 99, 123, 35);
+        comboBox.setModel(new DefaultComboBoxModel(ProductType.values()));
+        comboBox.setSelectedIndex(1);
+
+        comboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(final ItemEvent event) {
+                final JComboBox comboBox = (JComboBox) event.getSource();
+
+                final ProductType item = (ProductType) event.getItem();
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    setPizzaTypeVisible(item == ProductType.PIZZA);
+                    me.revalidate();
+                    me.repaint();
+                }
+            }
+        });
         contentPanel.add(comboBox);
 
-        final JComboBox comboBox_1 = new JComboBox();
-        comboBox_1.setModel(new DefaultComboBoxModel(
-                new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        comboBox_1.setBounds(83, 58, 67, 20);
-        contentPanel.add(comboBox_1);
-
         final JLabel lblQuantity = new JLabel("Quantity");
+        lblQuantity.setBounds(18, 80, 67, 14);
         lblQuantity.setHorizontalAlignment(SwingConstants.CENTER);
-        lblQuantity.setBounds(83, 39, 67, 14);
         contentPanel.add(lblQuantity);
 
         final JLabel lblProduct = new JLabel("Product");
-        lblProduct.setHorizontalAlignment(SwingConstants.CENTER);
-        lblProduct.setBounds(180, 39, 202, 14);
+        lblProduct.setBounds(131, 80, 116, 14);
+        lblProduct.setHorizontalAlignment(SwingConstants.LEFT);
         contentPanel.add(lblProduct);
 
-        final JLabel lblIngredients = new JLabel("Ingredients");
-        lblIngredients.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        lblIngredients.setHorizontalAlignment(SwingConstants.CENTER);
-        lblIngredients.setBounds(0, 89, 434, 23);
-        contentPanel.add(lblIngredients);
+        pizzaTypeCombobox
+                .setModel(new DefaultComboBoxModel(PizzaTypes.values()));
+        pizzaTypeCombobox.setSelectedIndex(0);
+        pizzaTypeCombobox.setBounds(259, 99, 123, 35);
+        contentPanel.add(pizzaTypeCombobox);
 
-        final JCheckBox addedIngredient = new JCheckBox("Some ingredient");
-        addedIngredient.setBounds(88, 115, 126, 23);
-        contentPanel.add(addedIngredient);
+        pizzaTypeLbl.setHorizontalAlignment(SwingConstants.LEFT);
+        pizzaTypeLbl.setBounds(266, 79, 116, 14);
+        contentPanel.add(pizzaTypeLbl);
+
+        spinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1),
+                null, new Integer(1)));
+        spinner.setBounds(18, 99, 73, 34);
+        contentPanel.add(spinner);
         {
             final JPanel buttonPane = new JPanel();
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 final JButton okButton = new JButton("OK");
+                okButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(final ActionEvent e) {
+                        final ProductType productType = (ProductType) comboBox
+                                .getSelectedItem();
+                        final PizzaTypes pizzaType = (PizzaTypes) pizzaTypeCombobox
+                                .getSelectedItem();
+                        final int quantity = (int) spinner.getValue();
+                        parent.addProduct(productType, quantity, pizzaType);
+                        System.out.println(
+                                productType + " " + quantity + " " + pizzaType);
+                    }
+                });
                 okButton.setActionCommand("OK");
                 buttonPane.add(okButton);
                 getRootPane().setDefaultButton(okButton);
@@ -108,5 +130,15 @@ public class AddOrderPage extends JDialog {
                 buttonPane.add(cancelButton);
             }
         }
+        setPizzaTypeVisible(false);
+    }
+
+    private void setPizzaTypeVisible(final boolean visible) {
+        pizzaTypeLbl.setVisible(visible);
+        pizzaTypeCombobox.setVisible(visible);
+    }
+
+    public OrderDialog getOrderItem() {
+        return parent;
     }
 }
