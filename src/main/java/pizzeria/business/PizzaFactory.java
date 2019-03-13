@@ -99,8 +99,6 @@ public class PizzaFactory {
         case VEGGIE_PIZZA:
             pizza = new VeggiePizza();
             break;
-        default:
-            return null;
         }
         pizza.loadIngredientsFromStore(storeIngredients, menuDetail.get(type));
         addIngredients(pizza, additional);

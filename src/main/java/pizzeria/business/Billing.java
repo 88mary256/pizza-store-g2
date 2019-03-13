@@ -63,9 +63,19 @@ public class Billing {
      * @param product  Product.
      */
     public void addProduct(final int quantity, final Product product) {
-        final double partialCost = product.getCost() * quantity;
-        items.add(new BillingItem(quantity, product, partialCost));
-        totalCost += partialCost;
+        items.add(new BillingItem(quantity, product));
+        totalCost += product.getCost() * quantity;
+    }
+
+    /**
+     * Add product to billing.
+     *
+     * @param quantity int.
+     * @param product  Product.
+     */
+    public void addProduct(final BillingItem item) {
+        items.add(item);
+        totalCost += item.getCost();
     }
 
     /**
@@ -79,5 +89,9 @@ public class Billing {
             amount += billingItem.getQuantity();
         }
         return amount;
+    }
+
+    public int getItemsSize() {
+        return this.items.size();
     }
 }

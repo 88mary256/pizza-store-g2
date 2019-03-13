@@ -51,8 +51,10 @@ public class Pizza extends Product {
     public void loadIngredientsFromStore(
             final Map<IngredientType, Ingredient> storeIngredients,
             final Collection<IngredientType> pizzaIngredients) {
-        for (final IngredientType ingredientType : pizzaIngredients) {
-            addIngredients(storeIngredients.get(ingredientType));
+        if (type != PizzaTypes.CUSTOM_PIZZA) {
+            for (final IngredientType ingredientType : pizzaIngredients) {
+                addIngredients(storeIngredients.get(ingredientType));
+            }
         }
     }
 
@@ -114,5 +116,9 @@ public class Pizza extends Product {
     public void removeIngredients(final Ingredient ingredient) {
         this.ingredients.remove(ingredient);
         this.cost = this.cost - ingredient.getCost();
+    }
+
+    public PizzaTypes getPizzaType() {
+        return type;
     }
 }

@@ -1,6 +1,8 @@
 package pizzeria.business;
 
+import pizzeria.data.Pizza;
 import pizzeria.data.Product;
+import pizzeria.data.ProductType;
 
 /** Billing Item is to get detail of billing per product. **/
 public class BillingItem {
@@ -18,14 +20,12 @@ public class BillingItem {
      *
      * @param newQuantity Quantity of product.
      * @param newProduct  Product.
-     * @param newCost     Partial cost.
      */
-    public BillingItem(final int newQuantity, final Product newProduct,
-            final double newCost) {
+    public BillingItem(final int newQuantity, final Product newProduct) {
         super();
         this.quantity = newQuantity;
         this.product = newProduct;
-        this.cost = newCost;
+        this.cost = this.product.getCost() * this.quantity;
     }
 
     /**
@@ -60,5 +60,11 @@ public class BillingItem {
     public String toString() {
         return "Item[quantity=" + quantity + ", partialCost=" + cost
                 + ", product=" + product + "]";
+    }
+
+    public String getProductType() {
+        return product.getProductType() == ProductType.PIZZA
+                ? ((Pizza) product).getPizzaType().name()
+                : product.getProductType().name();
     }
 }

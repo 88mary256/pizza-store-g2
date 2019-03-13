@@ -9,6 +9,7 @@ import pizzeria.data.IngredientType;
 import pizzeria.data.Lasania;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
+import pizzeria.data.Product;
 import pizzeria.data.ProductType;
 
 /**
@@ -57,18 +58,24 @@ public class Store {
     public Billing orderProducts(final List<OrderItem> order) {
         final Billing billing = new Billing();
         for (final OrderItem item : order) {
-            if (item.getProductType() == ProductType.PIZZA) {
-                final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
-                final Pizza pizza = factory.createPizza(
-                        orderPizzaItem.getPizzaType(),
-                        orderPizzaItem.getAdditionalIngredients(),
-                        orderPizzaItem.getRemovedIngredients());
-                billing.addProduct(item.getQuantity(), pizza);
-            } else if (item.getProductType() == ProductType.LASANIA) {
-                billing.addProduct(item.getQuantity(), orderLasania());
-            }
+            billing.addProduct(createBillingItem(item));
         }
         return billing;
+    }
+
+    public BillingItem createBillingItem(final OrderItem item) {
+        Product product = new Product();
+        if (item.getProductType() == ProductType.PIZZA) {
+            final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
+            final Pizza pizza = factory.createPizza(
+                    orderPizzaItem.getPizzaType(),
+                    orderPizzaItem.getAdditionalIngredients(),
+                    orderPizzaItem.getRemovedIngredients());
+            product = pizza;
+        } else if (item.getProductType() == ProductType.LASANIA) {
+            product = orderLasania();
+        }
+        return new BillingItem(item.getQuantity(), product);
     }
 
     /**
