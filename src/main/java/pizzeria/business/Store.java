@@ -1,6 +1,5 @@
 package pizzeria.business;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,6 @@ import pizzeria.data.IngredientType;
 import pizzeria.data.Lasania;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
-import pizzeria.data.Product;
 import pizzeria.data.ProductType;
 
 /**
@@ -57,42 +55,24 @@ public class Store {
      * @return billing
      */
     public Billing orderProducts(final List<OrderItem> order) {
-        double totalCost = 0;
-        final List<Product> products = new ArrayList<Product>();
-        for (final OrderItem orderItem : order) {
-            if (orderItem.getProductType() == ProductType.PIZZA) {
-                final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) orderItem;
+        final Billing billing = new Billing();
+        for (final OrderItem item : order) {
+            if (item.getProductType() == ProductType.PIZZA) {
+                final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
                 final Pizza pizza = factory.createPizza(
                         orderPizzaItem.getPizzaType(),
                         orderPizzaItem.getAdditionalIngredients(),
                         orderPizzaItem.getRemovedIngredients());
-                addProducts(orderItem.getQuantity(), pizza, products);
-                totalCost += orderItem.getQuantity() * pizza.getCost();
-
-            } else if (orderItem.getProductType() == ProductType.LASANIA) {
-                addProducts(orderItem.getQuantity(), orderLasania(), products);
-                totalCost += orderItem.getQuantity() * Lasania.LASANIA_COST;
+                billing.addProduct(item.getQuantity(), pizza);
+            } else if (item.getProductType() == ProductType.LASANIA) {
+                billing.addProduct(item.getQuantity(), orderLasania());
             }
         }
-        return new Billing(totalCost, products);
+        return billing;
     }
 
     /**
-     * Add amount of products to the list.
-     *
-     * @param quantity quantity to add.
-     * @param product  product to add.
-     * @param products list of products.
-     */
-    private void addProducts(final int quantity, final Product product,
-            final List<Product> products) {
-        for (int i = 0; i < quantity; i++) {
-            products.add(product);
-        }
-    }
-
-    /**
-     * Create a product Lasania
+     * Create a product Lasania.
      *
      * @return Lasania
      */

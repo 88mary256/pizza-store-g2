@@ -37,6 +37,7 @@ public class Pizza extends Product {
      * @param newType This is the type.
      */
     public Pizza(final PizzaTypes newType) {
+        this.productType = ProductType.PIZZA;
         this.type = newType;
         this.cost = CUSTOM_COST;
     }
@@ -82,7 +83,8 @@ public class Pizza extends Product {
     /** Customized toString method. **/
     @Override
     public String toString() {
-        return "Pizza " + type + " cost:" + cost;
+        return "Pizza[type=" + type + ", cost=" + cost + ", ingredients= "
+                + ingredients + "]";
     }
 
     /**

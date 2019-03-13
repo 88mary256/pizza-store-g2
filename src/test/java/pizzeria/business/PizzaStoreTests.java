@@ -15,13 +15,9 @@ import org.junit.Test;
 import pizzeria.data.CalmPizza;
 import pizzeria.data.CheesePizza;
 import pizzeria.data.GreekPizza;
-import pizzeria.data.Ingredient;
-import pizzeria.data.Lasania;
 import pizzeria.data.PepperoniPizza;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
-import pizzeria.data.Product;
-import pizzeria.data.ProductType;
 import pizzeria.data.VeggiePizza;
 import pizzeria.util.XmlParser;
 
@@ -101,14 +97,16 @@ public class PizzaStoreTests {
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
         final int amountOfPizzas = 4;
         final int sizeOfPrice = 8;
-
         final Billing billing = store.orderProducts(order);
+        System.out.println("billing: " + billing.getTotalCost());
+        System.out.println("billing: " + getBillingCost(billing));
+
         assertEquals(
                 String.valueOf(billing.getTotalCost()).substring(0,
                         sizeOfPrice),
                 String.valueOf(getBillingCost(billing)).substring(0,
                         sizeOfPrice));
-        assertEquals(billing.getProducts().size(), amountOfPizzas);
+        assertEquals(billing.getAmountOfProducts(), amountOfPizzas);
     }
 
     /**
@@ -119,30 +117,10 @@ public class PizzaStoreTests {
      */
     private double getBillingCost(final Billing bill) {
         double cost = 0;
-        for (final Product product : bill.getProducts()) {
-            cost += getCost(product);
+        for (final BillingItem item : bill.getItems()) {
+            cost += item.getCost();
         }
         return cost;
-    }
-
-    /**
-     * Get cost of a product.
-     *
-     * @param product product
-     * @return cost of a product
-     */
-    private double getCost(final Product product) {
-        if (product.getProductType() == ProductType.PIZZA) {
-            double cost = Pizza.CUSTOM_COST;
-            for (final Ingredient ingredient : ((Pizza) product)
-                    .getIngredients()) {
-                cost += ingredient.getCost();
-            }
-            return cost;
-        } else if (product.getProductType() == ProductType.LASANIA) {
-            return Lasania.LASANIA_COST;
-        } else
-            return 0;
     }
 
     /**
@@ -157,10 +135,11 @@ public class PizzaStoreTests {
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
 
         final Billing billing = store.orderProducts(order);
-        assertTrue(billing.getProducts().get(0) instanceof VeggiePizza);
-        assertTrue(billing.getProducts().get(1) instanceof VeggiePizza);
-        assertTrue(billing.getProducts().get(2) instanceof CheesePizza);
-        assertTrue(billing.getProducts()
-                .get(billing.getProducts().size() - 1) instanceof GreekPizza);
+        assertTrue(
+                billing.getItems().get(0).getProduct() instanceof VeggiePizza);
+        assertTrue(
+                billing.getItems().get(1).getProduct() instanceof CheesePizza);
+        assertTrue(
+                billing.getItems().get(2).getProduct() instanceof GreekPizza);
     }
 }
