@@ -21,13 +21,27 @@ import pizzeria.business.Company;
 import pizzeria.business.Store;
 import pizzeria.util.XmlParser;
 
+/**
+ * Main dialog to select in wich store you are.
+ *
+ * @author David Mamani.
+ */
 public class SelectStoreDialog extends JDialog {
-    final Company company = XmlParser.getCompany("resources/loadStores.xml");
+
+    /** Company information. **/
+    private final Company company = XmlParser
+            .getCompany("resources/loadStores.xml");
+
+    /** Main panel. **/
     private final JPanel contentPanel = new JPanel();
+
+    /** Combobox to select store. **/
     private final JComboBox storeSelection = new JComboBox();
 
     /**
      * Launch the application.
+     *
+     * @param args arguments to run.
      */
     public static void main(final String[] args) {
         try {
@@ -50,50 +64,42 @@ public class SelectStoreDialog extends JDialog {
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel);
 
-        final JFormattedTextField frmtdtxtfldWelcome = new JFormattedTextField();
-        frmtdtxtfldWelcome.setForeground(new Color(210, 105, 30));
-        frmtdtxtfldWelcome.setBackground(new Color(192, 192, 192));
-        frmtdtxtfldWelcome.setFont(new Font("Roboto", Font.PLAIN, 14));
-        frmtdtxtfldWelcome.setText("WELCOME TO JALA PIZZA COMPANY");
-        contentPanel.add(frmtdtxtfldWelcome);
-        {
-            final JPanel buttonPane = new JPanel();
-            buttonPane.setBounds(0, 223, 434, 38);
-            buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            getContentPane().add(buttonPane);
-            {
-                final JButton okButton = new JButton("OK");
-                okButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(final ActionEvent e) {
-                        final Store store = (Store) storeSelection
-                                .getSelectedItem();
-                        final OrderDialog orderDialog = new OrderDialog(store);
-                        orderDialog.setVisible(true);
-                    }
-                });
-                okButton.setActionCommand("OK");
-                buttonPane.add(okButton);
-                getRootPane().setDefaultButton(okButton);
+        final JFormattedTextField lblWelcome = new JFormattedTextField();
+        lblWelcome.setForeground(new Color(210, 105, 30));
+        lblWelcome.setBackground(new Color(192, 192, 192));
+        lblWelcome.setFont(new Font("Roboto", Font.PLAIN, 14));
+        lblWelcome.setText("WELCOME TO JALA PIZZA COMPANY");
+        contentPanel.add(lblWelcome);
+        final JPanel buttonPane = new JPanel();
+        buttonPane.setBounds(0, 223, 434, 38);
+        buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        getContentPane().add(buttonPane);
+        final JButton okButton = new JButton("OK");
+        okButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final Store store = (Store) storeSelection.getSelectedItem();
+                final OrderDialog orderDialog = new OrderDialog(store);
+                orderDialog.setVisible(true);
             }
-        }
-        {
+        });
+        okButton.setActionCommand("OK");
+        buttonPane.add(okButton);
+        getRootPane().setDefaultButton(okButton);
 
-            final List<Store> stores = company.getStores();
+        final List<Store> stores = company.getStores();
+        storeSelection.setModel(new DefaultComboBoxModel(stores.toArray()));
+        storeSelection.setBounds(85, 113, 271, 26);
+        getContentPane().add(storeSelection);
 
-            storeSelection.setModel(new DefaultComboBoxModel(stores.toArray()));
-            storeSelection.setBounds(85, 113, 271, 26);
-            getContentPane().add(storeSelection);
-        }
-
-        final JFormattedTextField frmtdtxtfldAPizzaFor = new JFormattedTextField();
-        frmtdtxtfldAPizzaFor.setHorizontalAlignment(SwingConstants.CENTER);
-        frmtdtxtfldAPizzaFor.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        frmtdtxtfldAPizzaFor.setBackground(new Color(192, 192, 192));
-        frmtdtxtfldAPizzaFor.setForeground(new Color(210, 105, 30));
-        frmtdtxtfldAPizzaFor.setText("<<A pizza for every client style>>");
-        frmtdtxtfldAPizzaFor.setBounds(0, 151, 434, 60);
-        getContentPane().add(frmtdtxtfldAPizzaFor);
+        final JFormattedTextField lbl2 = new JFormattedTextField();
+        lbl2.setHorizontalAlignment(SwingConstants.CENTER);
+        lbl2.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        lbl2.setBackground(new Color(192, 192, 192));
+        lbl2.setForeground(new Color(210, 105, 30));
+        lbl2.setText("<<A pizza for every client style>>");
+        lbl2.setBounds(0, 151, 434, 60);
+        getContentPane().add(lbl2);
 
         final JLabel lblToStartSelect = new JLabel("To start select a store");
         lblToStartSelect.setHorizontalAlignment(SwingConstants.CENTER);

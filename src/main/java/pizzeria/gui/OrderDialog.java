@@ -22,18 +22,38 @@ import pizzeria.business.BillingItem;
 import pizzeria.business.OrderItem;
 import pizzeria.business.Store;
 
+/**
+ * Dialog to make order, contains order detail.
+ *
+ * @author David Mamani
+ */
 public class OrderDialog extends JDialog {
 
+    /** Current store. **/
     private final Store store;
+
+    /** Main panel. **/
     private final JPanel contentPanel = new JPanel();
+
+    /** Table for detail order. **/
     private final JTable table;
+
+    /** This component. **/
     private final OrderDialog me = this;
+
+    /** Billing for order. **/
     private final Billing billing = new Billing();
+
+    /** Model of the table. **/
     private final DefaultTableModel dtm = new DefaultTableModel(0, 0);
+
+    /** Total cost label. **/
     private final JLabel lblTotalCost = new JLabel("0");
 
     /**
      * Create the dialog.
+     *
+     * @param newStore store where order.
      */
     public OrderDialog(final Store newStore) {
         store = newStore;
@@ -91,6 +111,12 @@ public class OrderDialog extends JDialog {
         getRootPane().setDefaultButton(okButton);
 
         final JButton submitOrderButton = new JButton("Placed an Order");
+        submitOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent arg0) {
+                System.out.println(billing.getItems());
+            }
+        });
         submitOrderButton.setActionCommand("Submit");
         buttonPane.add(submitOrderButton);
         final JButton cancelButton = new JButton("Cancel");
@@ -98,6 +124,11 @@ public class OrderDialog extends JDialog {
         buttonPane.add(cancelButton);
     }
 
+    /**
+     * Add product on the billing from an orderItem.
+     *
+     * @param orderItem order Item.
+     */
     public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
@@ -108,11 +139,14 @@ public class OrderDialog extends JDialog {
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();
-        System.out.println(orderItem);
         System.out.println(billing.getItemsSize());
-        System.out.println(billing.getItems());
     }
 
+    /**
+     * Get current Store.
+     *
+     * @return Store
+     **/
     public Store getStore() {
         return store;
     }

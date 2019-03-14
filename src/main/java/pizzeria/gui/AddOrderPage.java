@@ -29,28 +29,49 @@ import pizzeria.data.IngredientType;
 import pizzeria.data.PizzaTypes;
 import pizzeria.data.ProductType;
 
+/**
+ * Dialog to add products for an order.
+ *
+ * @author David Mamani
+ *
+ */
 public class AddOrderPage extends JDialog {
 
+    /** Main panel. **/
     private final JPanel contentPanel = new JPanel();
+
+    /** Pizza label. **/
     private final JLabel pizzaTypeLbl = new JLabel("Pizza Type");
+
+    /** Combobox for products. **/
     private final JComboBox comboBox = new JComboBox();
+
+    /** Combobox for pizzas. **/
     private final JComboBox pizzaTypeCombobox = new JComboBox();
+
+    /** Quantity spinner. **/
     private final JSpinner spinner = new JSpinner();
+
+    /** This dialog. **/
     private final JDialog me = this;
+
+    /** Parent dialog. **/
     private final OrderDialog parent;
 
     /** Panel for ingredients detail. **/
-    final PizzaDetails pizzaDetailPnl = new PizzaDetails();
+    private final PizzaDetails pizzaDetailPnl = new PizzaDetails();
 
     /** Panel for not customized products. **/
-    final JPanel productDetailPnl = new JPanel();
+    private final JPanel productDetailPnl = new JPanel();
 
     /**
      * Create the dialog.
+     *
+     * @param newParent parent component.
      */
     public AddOrderPage(final OrderDialog newParent) {
         this.parent = newParent;
-        setTitle("Add Product");
+        setTitle(parent.getStore().getName() + ": Add Product");
         setBounds(100, 100, 547, 481);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -157,6 +178,11 @@ public class AddOrderPage extends JDialog {
         setPizzaTypeVisible(false);
     }
 
+    /**
+     * Setter of visible pizza elements.
+     *
+     * @param visible boolean
+     */
     private void setPizzaTypeVisible(final boolean visible) {
         pizzaTypeLbl.setVisible(visible);
         pizzaTypeCombobox.setVisible(visible);
@@ -164,6 +190,11 @@ public class AddOrderPage extends JDialog {
         productDetailPnl.setVisible(!visible);
     }
 
+    /**
+     * Create order item with current dialog information.
+     *
+     * @return order item.
+     */
     private OrderItem createOrderItem() {
         final int quantity = (int) spinner.getValue();
         final ProductType productType = (ProductType) comboBox
@@ -177,9 +208,5 @@ public class AddOrderPage extends JDialog {
         } else {
             return new OrderItem(quantity, productType);
         }
-    }
-
-    public OrderDialog getOrderItem() {
-        return parent;
     }
 }

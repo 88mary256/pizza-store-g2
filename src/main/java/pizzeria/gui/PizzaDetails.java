@@ -61,10 +61,16 @@ public class PizzaDetails extends JPanel {
         this.add(addButton);
     }
 
+    /**
+     * Add ingredient to panel.
+     *
+     * @param ingredient IngredientType
+     **/
     public void addIngredient(final IngredientType ingredient) {
         new IngredientPanel(ingredient, ingredientsPanel);
     }
 
+    /** Remove all ingredients of the panel. **/
     public void clearIngredients() {
         ingredientsPanel.removeAll();
     }

@@ -63,6 +63,12 @@ public class Store {
         return billing;
     }
 
+    /**
+     * Create a billingItem from an order.
+     *
+     * @param item Order item
+     * @return billing item
+     */
     public BillingItem createBillingItem(final OrderItem item) {
         Product product = new Product();
         if (item.getProductType() == ProductType.PIZZA) {
@@ -105,6 +111,12 @@ public class Store {
         return name;
     }
 
+    /**
+     * Getter of default ingredients for a pizza type.
+     *
+     * @param type pizza type.
+     * @return list of ingredients type.
+     */
     public Collection<IngredientType> getDefaultIngredients(
             final PizzaTypes type) {
         return factory.getDefaultIngredients(type);

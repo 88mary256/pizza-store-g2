@@ -65,6 +65,9 @@ public class PizzaFactory {
         case VEGGIE_PIZZA:
             pizza = new VeggiePizza();
             break;
+        default:
+            pizza = new Pizza(PizzaTypes.CUSTOM_PIZZA);
+            break;
         }
         addIngredients(pizza, getDefaultIngredients(pizza.getPizzaType()));
         return pizza;
@@ -73,9 +76,8 @@ public class PizzaFactory {
     /**
      * Create a pizza from pizza type.
      *
-     * @param type       PizaType
-     * @param additional ingredients
-     * @param toRemove   ingredients
+     * @param type        PizaType
+     * @param ingredients ingredients
      * @return Pizza
      */
     public Pizza createPizza(final PizzaTypes type,
@@ -97,6 +99,9 @@ public class PizzaFactory {
         case VEGGIE_PIZZA:
             pizza = new VeggiePizza();
             break;
+        default:
+            pizza = new Pizza(PizzaTypes.CUSTOM_PIZZA);
+            break;
         }
         addIngredients(pizza, ingredients);
         if (ingredients.isEmpty()) {
@@ -106,18 +111,24 @@ public class PizzaFactory {
     }
 
     /**
-     * Method that add extra ingredients to a pizza.
+     * Method that add ingredients to a pizza.
      *
-     * @param pizza      pizza
-     * @param additional ingredient list
+     * @param pizza       pizza
+     * @param ingredients ingredient list
      */
     private void addIngredients(final Pizza pizza,
-            final Collection<IngredientType> additional) {
-        for (final IngredientType ingredientType : additional) {
+            final Collection<IngredientType> ingredients) {
+        for (final IngredientType ingredientType : ingredients) {
             pizza.addIngredients(storeIngredients.get(ingredientType));
         }
     }
 
+    /**
+     * Get default ingredients of a pizza according to the store definition.
+     *
+     * @param type pizza type
+     * @return ingredients type list.
+     */
     public Collection<IngredientType> getDefaultIngredients(
             final PizzaTypes type) {
         return menuDetail.containsKey(type) ? menuDetail.get(type)

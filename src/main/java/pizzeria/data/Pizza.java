@@ -100,6 +100,11 @@ public class Pizza extends Product {
         this.cost = this.cost - ingredient.getCost();
     }
 
+    /**
+     * Getter of pizza type.
+     * 
+     * @return pizza type.
+     */
     public PizzaTypes getPizzaType() {
         return type;
     }
