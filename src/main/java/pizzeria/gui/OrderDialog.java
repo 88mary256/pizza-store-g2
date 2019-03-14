@@ -70,7 +70,7 @@ public class OrderDialog extends JDialog {
         table.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 
         // add header of the table
-        final String header[] = new String[] { "Nro.", "Product", "Unit price",
+        final String header[] = new String[] {"Nro.", "Product", "Unit price",
                 "Quantity", "Partial Cost", "Actions" };
 
         // add header in table model
@@ -138,7 +138,7 @@ public class OrderDialog extends JDialog {
     public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
-        dtm.addRow(new Object[] { billing.getItemsSize(),
+        dtm.addRow(new Object[] {billing.getItemsSize(),
                 billingItem.getProductType(),
                 billingItem.getProduct().getCost(), billingItem.getQuantity(),
                 billingItem.getCost(), "remove" });

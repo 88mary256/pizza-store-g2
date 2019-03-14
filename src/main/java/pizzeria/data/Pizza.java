@@ -102,7 +102,7 @@ public class Pizza extends Product {
 
     /**
      * Getter of pizza type.
-     * 
+     *
      * @return pizza type.
      */
     public PizzaTypes getPizzaType() {
