@@ -219,5 +219,7 @@ public class AddOrderPage extends JDialog {
         for (final IngredientType ingredientType : ingredients) {
             pizzaDetailPnl.addIngredient(ingredientType);
         }
+        pizzaDetailPnl.revalidate();
+        pizzaDetailPnl.repaint();
     }
 }

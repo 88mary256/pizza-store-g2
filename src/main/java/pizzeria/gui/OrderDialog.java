@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -43,13 +44,15 @@ public class OrderDialog extends JDialog {
     private final OrderDialog me = this;
 
     /** Billing for order. **/
-    private final Billing billing = new Billing();
+    private Billing billing = new Billing();
 
     /** Model of the table. **/
     private final DefaultTableModel dtm;
 
     /** Total cost label. **/
     private final JLabel lblTotalCost = new JLabel("0");
+
+    private static DecimalFormat formatter = new DecimalFormat();
 
     /**
      * Create the dialog.
@@ -128,7 +131,8 @@ public class OrderDialog extends JDialog {
                 if (i >= 0) {
                     dtm.removeRow(i);
                     billing.removeProduct(i);
-                    lblTotalCost.setText(billing.getTotalCost() + "");
+                    lblTotalCost.setText(
+                            getFormatedNumber(billing.getTotalCost()) + "");
                 } else {
                     JOptionPane.showMessageDialog(null, "No row selected");
                 }
@@ -140,7 +144,10 @@ public class OrderDialog extends JDialog {
         submitOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent arg0) {
+
                 System.out.println(billing.getItems());
+                JOptionPane.showMessageDialog(null, "Printing ...");
+                clearTable();
             }
         });
         submitOrderButton.setActionCommand("Submit");
@@ -166,9 +173,10 @@ public class OrderDialog extends JDialog {
         billing.addProduct(billingItem);
         dtm.addRow(new Object[] { billing.getItemsSize(),
                 billingItem.getProductType(), billingItem.getIngredients(),
-                billingItem.getProduct().getCost(), billingItem.getQuantity(),
-                billingItem.getCost() });
-        lblTotalCost.setText(billing.getTotalCost() + "");
+                getFormatedNumber(billingItem.getProduct().getCost()),
+                billingItem.getQuantity(),
+                getFormatedNumber(billingItem.getCost()) });
+        lblTotalCost.setText(getFormatedNumber(billing.getTotalCost()));
         this.revalidate();
         this.repaint();
         System.out.println(billing.getItemsSize());
@@ -181,5 +189,28 @@ public class OrderDialog extends JDialog {
      **/
     public Store getStore() {
         return store;
+    }
+
+    /**
+     * Get number as string with 2 decimals.
+     *
+     * @param value double number.
+     * @return formated number as string.
+     */
+    private String getFormatedNumber(final double value) {
+        formatter.applyPattern("#####.##");
+        return formatter.format(value);
+    }
+
+    /**
+     * Clear row table data.
+     */
+    private void clearTable() {
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+            dtm.removeRow(i);
+        }
+        billing = new Billing();
+        this.revalidate();
+        this.repaint();
     }
 }
