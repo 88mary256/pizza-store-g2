@@ -33,7 +33,7 @@ import pizzeria.data.ProductType;
  * Dialog to add products for an order.
  *
  * @author David Mamani
- *
+ * @author Marines Lopez Soliz
  */
 public class AddOrderPage extends JDialog {
 
@@ -113,22 +113,17 @@ public class AddOrderPage extends JDialog {
 
         pizzaTypeCombobox
                 .setModel(new DefaultComboBoxModel(PizzaTypes.values()));
-        pizzaTypeCombobox.setSelectedIndex(0);
         pizzaTypeCombobox.setBounds(326, 78, 189, 35);
         pizzaTypeCombobox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(final ItemEvent event) {
                 if (event.getStateChange() == ItemEvent.SELECTED) {
                     final PizzaTypes type = (PizzaTypes) event.getItem();
-                    final Collection<IngredientType> ingredients = parent
-                            .getStore().getDefaultIngredients(type);
-                    pizzaDetailPnl.clearIngredients();
-                    for (final IngredientType ingredientType : ingredients) {
-                        pizzaDetailPnl.addIngredient(ingredientType);
-                    }
+                    loadIngredientsOnPizzaDetailPnl(type);
                 }
             }
         });
+        pizzaTypeCombobox.setSelectedIndex(0);
         contentPanel.add(pizzaTypeCombobox);
 
         pizzaTypeLbl.setHorizontalAlignment(SwingConstants.LEFT);
@@ -141,6 +136,8 @@ public class AddOrderPage extends JDialog {
         contentPanel.add(spinner);
 
         pizzaDetailPnl.setBounds(14, 135, 501, 263);
+        loadIngredientsOnPizzaDetailPnl(
+                (PizzaTypes) pizzaTypeCombobox.getSelectedItem());
         contentPanel.add(pizzaDetailPnl);
 
         productDetailPnl.setBounds(14, 135, 501, 263);
@@ -207,6 +204,20 @@ public class AddOrderPage extends JDialog {
             return new OrderPizzaItem(quantity, pizzaType, ingredients);
         } else {
             return new OrderItem(quantity, productType);
+        }
+    }
+
+    /**
+     * Load ingredients to pizzaDetailPanel from a pizza type.
+     *
+     * @param type pizza type.
+     */
+    private void loadIngredientsOnPizzaDetailPnl(final PizzaTypes type) {
+        final Collection<IngredientType> ingredients = parent.getStore()
+                .getDefaultIngredients(type);
+        pizzaDetailPnl.clearIngredients();
+        for (final IngredientType ingredientType : ingredients) {
+            pizzaDetailPnl.addIngredient(ingredientType);
         }
     }
 }

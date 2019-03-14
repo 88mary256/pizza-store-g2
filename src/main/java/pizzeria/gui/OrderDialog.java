@@ -120,6 +120,12 @@ public class OrderDialog extends JDialog {
         submitOrderButton.setActionCommand("Submit");
         buttonPane.add(submitOrderButton);
         final JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                me.dispose();
+            }
+        });
         cancelButton.setActionCommand("Cancel");
         buttonPane.add(cancelButton);
     }
