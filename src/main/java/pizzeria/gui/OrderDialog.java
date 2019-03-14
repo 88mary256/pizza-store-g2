@@ -74,8 +74,8 @@ public class OrderDialog extends JDialog {
         table.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         // add header of the table
-        final String[] header = { "Nro.", "Product", "Ingredients",
-                "Unit price", "Quantity", "Partial Cost" };
+        final String[] header = {"Nro.", "Product", "Ingredients",
+                "Unit price", "Quantity", "Partial Cost"};
 
         dtm = new DefaultTableModel(0, 0) {
             @Override
@@ -171,11 +171,11 @@ public class OrderDialog extends JDialog {
     public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
-        dtm.addRow(new Object[] { billing.getItemsSize(),
+        dtm.addRow(new Object[] {billing.getItemsSize(),
                 billingItem.getProductType(), billingItem.getIngredients(),
                 getFormatedNumber(billingItem.getProduct().getCost()),
                 billingItem.getQuantity(),
-                getFormatedNumber(billingItem.getCost()) });
+                getFormatedNumber(billingItem.getCost())});
         lblTotalCost.setText(getFormatedNumber(billing.getTotalCost()));
         this.revalidate();
         this.repaint();
