@@ -78,6 +78,11 @@ public class Billing {
         totalCost += item.getCost();
     }
 
+    public void removeProduct(final BillingItem item) {
+        items.remove(item);
+        totalCost -= item.getCost();
+    }
+
     /**
      * Get amount of products.
      *

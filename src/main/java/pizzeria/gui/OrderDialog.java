@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -93,6 +94,22 @@ public class OrderDialog extends JDialog {
         buttonPane.add(okButton);
         getRootPane().setDefaultButton(okButton);
 
+        final JButton btnRemoveSelected = new JButton("Remove Selected");
+        btnRemoveSelected.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final int i = table.getSelectedRow();
+                if (i > 0) {
+                    dtm.removeRow(i);
+                    billing.removeProduct();
+                    lblTotalCost.setText(billing.getTotalCost() + "");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No row selected");
+                }
+            }
+        });
+        buttonPane.add(btnRemoveSelected);
+
         final JButton submitOrderButton = new JButton("Placed an Order");
         submitOrderButton.setActionCommand("Submit");
         buttonPane.add(submitOrderButton);
@@ -110,7 +127,7 @@ public class OrderDialog extends JDialog {
         dtm.addRow(new Object[] { billing.getItemsSize(),
                 billingItem.getProductType(),
                 billingItem.getProduct().getCost(), quantity,
-                billingItem.getCost(), "remove" });
+                billingItem.getCost(), "Remove" });
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();
