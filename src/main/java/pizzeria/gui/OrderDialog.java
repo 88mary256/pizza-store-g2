@@ -59,7 +59,7 @@ public class OrderDialog extends JDialog {
     public OrderDialog(final Store newStore) {
         store = newStore;
         setTitle(store.getName() + ": New Order");
-        setBounds(100, 100, 600, 543);
+        setBounds(100, 100, 786, 548);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -69,19 +69,22 @@ public class OrderDialog extends JDialog {
         table.setShowVerticalLines(true);
         table.setShowHorizontalLines(true);
         table.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
-
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         // add header of the table
-        final String[] header = {"Nro.", "Product", "Ingredients",
-                "Unit price", "Quantity", "Partial Cost"};
+        final String[] header = { "Nro.", "Product", "Ingredients",
+                "Unit price", "Quantity", "Partial Cost" };
 
         // add header in table model
         dtm.setColumnIdentifiers(header);
         contentPanel.setLayout(null);
         // set model into the table object
         table.setModel(dtm);
+        table.getColumnModel().getColumn(0).setPreferredWidth(20);
+        table.getColumnModel().getColumn(1).setPreferredWidth(140);
+        table.getColumnModel().getColumn(2).setPreferredWidth(300);
 
         final JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(56, 10, 471, 406);
+        scrollPane.setBounds(23, 10, 725, 406);
         scrollPane.setVerticalScrollBarPolicy(
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(
@@ -89,11 +92,11 @@ public class OrderDialog extends JDialog {
         contentPanel.add(scrollPane);
 
         final JLabel lblCost = new JLabel("Total Cost: ");
-        lblCost.setBounds(56, 428, 113, 16);
+        lblCost.setBounds(569, 428, 81, 16);
         contentPanel.add(lblCost);
 
         lblTotalCost.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblTotalCost.setBounds(415, 428, 91, 16);
+        lblTotalCost.setBounds(634, 428, 91, 16);
         contentPanel.add(lblTotalCost);
 
         final JPanel buttonPane = new JPanel();
@@ -155,10 +158,10 @@ public class OrderDialog extends JDialog {
     public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
-        dtm.addRow(new Object[] {billing.getItemsSize(),
+        dtm.addRow(new Object[] { billing.getItemsSize(),
                 billingItem.getProductType(), billingItem.getIngredients(),
                 billingItem.getProduct().getCost(), billingItem.getQuantity(),
-                billingItem.getCost()});
+                billingItem.getCost() });
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();
