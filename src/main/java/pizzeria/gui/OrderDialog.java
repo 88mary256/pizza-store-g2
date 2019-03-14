@@ -21,23 +21,40 @@ import javax.swing.table.DefaultTableModel;
 import pizzeria.business.Billing;
 import pizzeria.business.BillingItem;
 import pizzeria.business.OrderItem;
-import pizzeria.business.OrderPizzaItem;
 import pizzeria.business.Store;
-import pizzeria.data.PizzaTypes;
-import pizzeria.data.ProductType;
 
+/**
+ * Dialog to make order, contains order detail.
+ *
+ * @author David Mamani
+ */
 public class OrderDialog extends JDialog {
 
+    /** Current store. **/
     private final Store store;
+
+    /** Main panel. **/
     private final JPanel contentPanel = new JPanel();
+
+    /** Table for detail order. **/
     private final JTable table;
+
+    /** This component. **/
     private final OrderDialog me = this;
+
+    /** Billing for order. **/
     private final Billing billing = new Billing();
+
+    /** Model of the table. **/
     private final DefaultTableModel dtm = new DefaultTableModel(0, 0);
+
+    /** Total cost label. **/
     private final JLabel lblTotalCost = new JLabel("0");
 
     /**
      * Create the dialog.
+     *
+     * @param newStore store where order.
      */
     public OrderDialog(final Store newStore) {
         store = newStore;
@@ -54,7 +71,7 @@ public class OrderDialog extends JDialog {
         table.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 
         // add header of the table
-        final String header[] = new String[] { "Nro.", "Product", "Unit price",
+        final String header[] = new String[] {"Nro.", "Product", "Unit price",
                 "Quantity", "Partial Cost", "Actions" };
 
         // add header in table model
@@ -111,35 +128,49 @@ public class OrderDialog extends JDialog {
         buttonPane.add(btnRemoveSelected);
 
         final JButton submitOrderButton = new JButton("Placed an Order");
+        submitOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent arg0) {
+                System.out.println(billing.getItems());
+            }
+        });
         submitOrderButton.setActionCommand("Submit");
         buttonPane.add(submitOrderButton);
         final JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                me.dispose();
+            }
+        });
         cancelButton.setActionCommand("Cancel");
         buttonPane.add(cancelButton);
     }
 
-    public void addProduct(final ProductType productType, final int quantity,
-            final PizzaTypes pizzaType) {
-        final OrderItem orderItem = createOrderItem(productType, quantity,
-                pizzaType);
+    /**
+     * Add product on the billing from an orderItem.
+     *
+     * @param orderItem order Item.
+     */
+    public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
-        dtm.addRow(new Object[] { billing.getItemsSize(),
+        dtm.addRow(new Object[] {billing.getItemsSize(),
                 billingItem.getProductType(),
-                billingItem.getProduct().getCost(), quantity,
-                billingItem.getCost(), "Remove" });
+                billingItem.getProduct().getCost(), billingItem.getQuantity(),
+                billingItem.getCost(), "remove" });
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();
         System.out.println(billing.getItemsSize());
     }
 
-    private OrderItem createOrderItem(final ProductType productType,
-            final int quantity, final PizzaTypes pizzaType) {
-        if (productType == ProductType.PIZZA) {
-            return new OrderPizzaItem(quantity, pizzaType);
-        } else {
-            return new OrderItem(quantity, productType);
-        }
+    /**
+     * Get current Store.
+     *
+     * @return Store
+     **/
+    public Store getStore() {
+        return store;
     }
 }

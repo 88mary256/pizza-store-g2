@@ -62,6 +62,11 @@ public class BillingItem {
                 + ", product=" + product + "]";
     }
 
+    /**
+     * Getter of product type as string.
+     *
+     * @return string
+     */
     public String getProductType() {
         return product.getProductType() == ProductType.PIZZA
                 ? ((Pizza) product).getPizzaType().name()

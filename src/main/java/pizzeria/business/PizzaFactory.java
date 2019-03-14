@@ -1,6 +1,7 @@
 package pizzeria.business;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -65,23 +66,22 @@ public class PizzaFactory {
             pizza = new VeggiePizza();
             break;
         default:
-            return null;
+            pizza = new Pizza(PizzaTypes.CUSTOM_PIZZA);
+            break;
         }
-        pizza.loadIngredientsFromStore(storeIngredients, menuDetail.get(type));
+        addIngredients(pizza, getDefaultIngredients(pizza.getPizzaType()));
         return pizza;
     }
 
     /**
      * Create a pizza from pizza type.
      *
-     * @param type       PizaType
-     * @param additional ingredients
-     * @param toRemove   ingredients
+     * @param type        PizaType
+     * @param ingredients ingredients
      * @return Pizza
      */
     public Pizza createPizza(final PizzaTypes type,
-            final List<IngredientType> additional,
-            final List<IngredientType> toRemove) {
+            final List<IngredientType> ingredients) {
         Pizza pizza = new Pizza(type);
         switch (type) {
         case CHEESE_PIZZA:
@@ -99,36 +99,39 @@ public class PizzaFactory {
         case VEGGIE_PIZZA:
             pizza = new VeggiePizza();
             break;
+        default:
+            pizza = new Pizza(PizzaTypes.CUSTOM_PIZZA);
+            break;
         }
-        pizza.loadIngredientsFromStore(storeIngredients, menuDetail.get(type));
-        addIngredients(pizza, additional);
-        removeIngredients(pizza, toRemove);
+        addIngredients(pizza, ingredients);
+        if (ingredients.isEmpty()) {
+            addIngredients(pizza, getDefaultIngredients(pizza.getPizzaType()));
+        }
         return pizza;
     }
 
     /**
-     * Method that remove ingredients from a pizza.
+     * Method that add ingredients to a pizza.
      *
-     * @param pizza    pizza
-     * @param toRemove ingredient list
+     * @param pizza       pizza
+     * @param ingredients ingredient list
      */
-    private void removeIngredients(final Pizza pizza,
-            final List<IngredientType> toRemove) {
-        for (final IngredientType ingredientType : toRemove) {
-            pizza.removeIngredients(storeIngredients.get(ingredientType));
+    private void addIngredients(final Pizza pizza,
+            final Collection<IngredientType> ingredients) {
+        for (final IngredientType ingredientType : ingredients) {
+            pizza.addIngredients(storeIngredients.get(ingredientType));
         }
     }
 
     /**
-     * Method that add extra ingredients to a pizza.
+     * Get default ingredients of a pizza according to the store definition.
      *
-     * @param pizza      pizza
-     * @param additional ingredient list
+     * @param type pizza type
+     * @return ingredients type list.
      */
-    private void addIngredients(final Pizza pizza,
-            final List<IngredientType> additional) {
-        for (final IngredientType ingredientType : additional) {
-            pizza.addIngredients(storeIngredients.get(ingredientType));
-        }
+    public Collection<IngredientType> getDefaultIngredients(
+            final PizzaTypes type) {
+        return menuDetail.containsKey(type) ? menuDetail.get(type)
+                : Collections.EMPTY_LIST;
     }
 }

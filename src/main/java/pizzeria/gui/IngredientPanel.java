@@ -10,14 +10,27 @@ import javax.swing.SwingConstants;
 
 import pizzeria.data.IngredientType;
 
+/**
+ * Ingredient Component that can be added/deleted of its parent.
+ *
+ * @author Marines Lopez Soliz
+ */
 public class IngredientPanel extends JPanel {
 
+    /** Ingredient type. **/
     private IngredientType iname = IngredientType.TOMATOES;
+
+    /** Parent component. **/
     private final JPanel parent;
+
+    /** This component. **/
     private final IngredientPanel me;
 
     /**
      * Create the panel.
+     *
+     * @param newIname  ingredient type.
+     * @param newParent parent component.
      */
     public IngredientPanel(final IngredientType newIname,
             final JPanel newParent) {
@@ -51,6 +64,11 @@ public class IngredientPanel extends JPanel {
         parent.repaint();
     }
 
+    /**
+     * Getter of ingredient.
+     *
+     * @return Ingredient type
+     **/
     public IngredientType getIname() {
         return iname;
     }

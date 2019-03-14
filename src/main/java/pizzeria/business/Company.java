@@ -45,6 +45,11 @@ public class Company {
                 .collect(Collectors.toList()).get(0);
     }
 
+    /**
+     * Getter of stores.
+     *
+     * @return stores.
+     */
     public List<Store> getStores() {
         return this.stores;
     }

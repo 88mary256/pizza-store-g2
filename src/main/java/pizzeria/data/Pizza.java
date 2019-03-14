@@ -1,9 +1,7 @@
 package pizzeria.data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Define common variables and methods for different Pizza products.
@@ -40,22 +38,6 @@ public class Pizza extends Product {
         this.productType = ProductType.PIZZA;
         this.type = newType;
         this.cost = CUSTOM_COST;
-    }
-
-    /**
-     * Method that load ingredients for pizza from the store configuration.
-     *
-     * @param storeIngredients Map<IngredientType, Ingredient>
-     * @param pizzaIngredients Collection<IngredientType>
-     */
-    public void loadIngredientsFromStore(
-            final Map<IngredientType, Ingredient> storeIngredients,
-            final Collection<IngredientType> pizzaIngredients) {
-        if (type != PizzaTypes.CUSTOM_PIZZA) {
-            for (final IngredientType ingredientType : pizzaIngredients) {
-                addIngredients(storeIngredients.get(ingredientType));
-            }
-        }
     }
 
     /**
@@ -118,6 +100,11 @@ public class Pizza extends Product {
         this.cost = this.cost - ingredient.getCost();
     }
 
+    /**
+     * Getter of pizza type.
+     *
+     * @return pizza type.
+     */
     public PizzaTypes getPizzaType() {
         return type;
     }

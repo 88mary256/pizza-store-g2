@@ -70,8 +70,7 @@ public class Billing {
     /**
      * Add product to billing.
      *
-     * @param quantity int.
-     * @param product  Product.
+     * @param item billing item.
      */
     public void addProduct(final BillingItem item) {
         items.add(item);
@@ -96,6 +95,11 @@ public class Billing {
         return amount;
     }
 
+    /**
+     * Getter of items size.
+     *
+     * @return items size.
+     */
     public int getItemsSize() {
         return this.items.size();
     }

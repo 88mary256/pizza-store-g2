@@ -63,14 +63,19 @@ public class Store {
         return billing;
     }
 
+    /**
+     * Create a billingItem from an order.
+     *
+     * @param item Order item
+     * @return billing item
+     */
     public BillingItem createBillingItem(final OrderItem item) {
         Product product = new Product();
         if (item.getProductType() == ProductType.PIZZA) {
             final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
             final Pizza pizza = factory.createPizza(
                     orderPizzaItem.getPizzaType(),
-                    orderPizzaItem.getAdditionalIngredients(),
-                    orderPizzaItem.getRemovedIngredients());
+                    orderPizzaItem.getIngredients());
             product = pizza;
         } else if (item.getProductType() == ProductType.LASANIA) {
             product = orderLasania();
@@ -98,11 +103,22 @@ public class Store {
 
     /**
      * Custom toString.
-     * 
+     *
      * @return name
      */
     @Override
     public String toString() {
         return name;
+    }
+
+    /**
+     * Getter of default ingredients for a pizza type.
+     *
+     * @param type pizza type.
+     * @return list of ingredients type.
+     */
+    public Collection<IngredientType> getDefaultIngredients(
+            final PizzaTypes type) {
+        return factory.getDefaultIngredients(type);
     }
 }
