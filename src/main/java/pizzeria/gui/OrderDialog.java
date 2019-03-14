@@ -46,7 +46,7 @@ public class OrderDialog extends JDialog {
     private final Billing billing = new Billing();
 
     /** Model of the table. **/
-    private final DefaultTableModel dtm = new DefaultTableModel(0, 0);
+    private final DefaultTableModel dtm;
 
     /** Total cost label. **/
     private final JLabel lblTotalCost = new JLabel("0");
@@ -74,6 +74,12 @@ public class OrderDialog extends JDialog {
         final String[] header = { "Nro.", "Product", "Ingredients",
                 "Unit price", "Quantity", "Partial Cost" };
 
+        dtm = new DefaultTableModel(0, 0) {
+            @Override
+            public boolean isCellEditable(final int row, final int column) {
+                return false;
+            }
+        };
         // add header in table model
         dtm.setColumnIdentifiers(header);
         contentPanel.setLayout(null);
