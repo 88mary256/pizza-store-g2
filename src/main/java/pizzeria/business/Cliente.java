@@ -1,8 +1,7 @@
 package pizzeria.business;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 
 import pizzeria.data.IngredientType;
@@ -42,13 +41,18 @@ public final class Cliente {
         final List<OrderItem> order = new ArrayList<OrderItem>();
         order.add(new OrderPizzaItem(2, PizzaTypes.VEGGIE_PIZZA));
         order.add(new OrderPizzaItem(1, PizzaTypes.CHEESE_PIZZA));
+        final Collection<IngredientType> customCheese = store
+                .getDefaultIngredients(PizzaTypes.CHEESE_PIZZA);
+        customCheese.add(IngredientType.TOMATOES);
+        customCheese.remove(IngredientType.GREEN_PEPPER);
         order.add(new OrderPizzaItem(1, PizzaTypes.CHEESE_PIZZA,
-                Arrays.asList(IngredientType.TOMATOES),
-                Arrays.asList(IngredientType.GREEN_PEPPER)));
+                (List<IngredientType>) customCheese));
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA));
+        final Collection<IngredientType> customGreek = store
+                .getDefaultIngredients(PizzaTypes.CHEESE_PIZZA);
+        customGreek.remove(IngredientType.ARTICHOKES);
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA,
-                Collections.EMPTY_LIST,
-                Arrays.asList(IngredientType.ARTICHOKES)));
+                (List<IngredientType>) customGreek));
         order.add(new OrderItem(2, ProductType.LASANIA));
 
         final Billing billing = store.orderProducts(order);

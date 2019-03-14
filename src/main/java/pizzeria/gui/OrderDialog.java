@@ -20,10 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import pizzeria.business.Billing;
 import pizzeria.business.BillingItem;
 import pizzeria.business.OrderItem;
-import pizzeria.business.OrderPizzaItem;
 import pizzeria.business.Store;
-import pizzeria.data.PizzaTypes;
-import pizzeria.data.ProductType;
 
 public class OrderDialog extends JDialog {
 
@@ -101,28 +98,22 @@ public class OrderDialog extends JDialog {
         buttonPane.add(cancelButton);
     }
 
-    public void addProduct(final ProductType productType, final int quantity,
-            final PizzaTypes pizzaType) {
-        final OrderItem orderItem = createOrderItem(productType, quantity,
-                pizzaType);
+    public void addProduct(final OrderItem orderItem) {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
         dtm.addRow(new Object[] { billing.getItemsSize(),
                 billingItem.getProductType(),
-                billingItem.getProduct().getCost(), quantity,
+                billingItem.getProduct().getCost(), billingItem.getQuantity(),
                 billingItem.getCost(), "remove" });
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();
+        System.out.println(orderItem);
         System.out.println(billing.getItemsSize());
+        System.out.println(billing.getItems());
     }
 
-    private OrderItem createOrderItem(final ProductType productType,
-            final int quantity, final PizzaTypes pizzaType) {
-        if (productType == ProductType.PIZZA) {
-            return new OrderPizzaItem(quantity, pizzaType);
-        } else {
-            return new OrderItem(quantity, productType);
-        }
+    public Store getStore() {
+        return store;
     }
 }

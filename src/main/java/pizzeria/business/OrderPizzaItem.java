@@ -19,26 +19,20 @@ public class OrderPizzaItem extends OrderItem {
     private final PizzaTypes pizzaType;
 
     /** Ingredients to add. **/
-    private final List<IngredientType> additionalIngredients;
-
-    /** Ingredients to remove. **/
-    private final List<IngredientType> removedIngredients;
+    private final List<IngredientType> ingredients;
 
     /**
      * Parameterized constructor.
      *
-     * @param newQuantity              int, quantity of products.
-     * @param newPizzaType             PizzaTypes, type of pizza.
-     * @param newAdditionalIngredients List, list of additional ingredients.
-     * @param newRemovedIngredients    List, list of ingredients to be removed.
+     * @param newQuantity    int, quantity of products.
+     * @param newPizzaType   PizzaTypes, type of pizza.
+     * @param newIngredients List, list of ingredients.
      */
     public OrderPizzaItem(final int newQuantity, final PizzaTypes newPizzaType,
-            final List<IngredientType> newAdditionalIngredients,
-            final List<IngredientType> newRemovedIngredients) {
+            final List<IngredientType> newIngredients) {
         super(newQuantity, ProductType.PIZZA);
         this.pizzaType = newPizzaType;
-        this.additionalIngredients = newAdditionalIngredients;
-        this.removedIngredients = newRemovedIngredients;
+        this.ingredients = newIngredients;
     }
 
     /**
@@ -51,8 +45,7 @@ public class OrderPizzaItem extends OrderItem {
             final PizzaTypes newPizzaType) {
         super(newQuantity, ProductType.PIZZA);
         this.pizzaType = newPizzaType;
-        this.additionalIngredients = Collections.EMPTY_LIST;
-        this.removedIngredients = Collections.EMPTY_LIST;
+        this.ingredients = Collections.EMPTY_LIST;
     }
 
     /**
@@ -65,20 +58,11 @@ public class OrderPizzaItem extends OrderItem {
     }
 
     /**
-     * Getter of additional ingredients.
+     * Getter of ingredients.
      *
      * @return IngredientType list.
      */
-    public List<IngredientType> getAdditionalIngredients() {
-        return additionalIngredients;
-    }
-
-    /**
-     * Getter of ingredients to remove.
-     *
-     * @return IngredientType list.
-     */
-    public List<IngredientType> getRemovedIngredients() {
-        return removedIngredients;
+    public List<IngredientType> getIngredients() {
+        return ingredients;
     }
 }

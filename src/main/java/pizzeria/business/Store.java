@@ -69,8 +69,7 @@ public class Store {
             final OrderPizzaItem orderPizzaItem = (OrderPizzaItem) item;
             final Pizza pizza = factory.createPizza(
                     orderPizzaItem.getPizzaType(),
-                    orderPizzaItem.getAdditionalIngredients(),
-                    orderPizzaItem.getRemovedIngredients());
+                    orderPizzaItem.getIngredients());
             product = pizza;
         } else if (item.getProductType() == ProductType.LASANIA) {
             product = orderLasania();
@@ -98,11 +97,16 @@ public class Store {
 
     /**
      * Custom toString.
-     * 
+     *
      * @return name
      */
     @Override
     public String toString() {
         return name;
+    }
+
+    public Collection<IngredientType> getDefaultIngredients(
+            final PizzaTypes type) {
+        return factory.getDefaultIngredients(type);
     }
 }

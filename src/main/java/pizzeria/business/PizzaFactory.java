@@ -1,6 +1,7 @@
 package pizzeria.business;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -64,10 +65,8 @@ public class PizzaFactory {
         case VEGGIE_PIZZA:
             pizza = new VeggiePizza();
             break;
-        default:
-            return null;
         }
-        pizza.loadIngredientsFromStore(storeIngredients, menuDetail.get(type));
+        addIngredients(pizza, getDefaultIngredients(pizza.getPizzaType()));
         return pizza;
     }
 
@@ -80,8 +79,7 @@ public class PizzaFactory {
      * @return Pizza
      */
     public Pizza createPizza(final PizzaTypes type,
-            final List<IngredientType> additional,
-            final List<IngredientType> toRemove) {
+            final List<IngredientType> ingredients) {
         Pizza pizza = new Pizza(type);
         switch (type) {
         case CHEESE_PIZZA:
@@ -100,23 +98,11 @@ public class PizzaFactory {
             pizza = new VeggiePizza();
             break;
         }
-        pizza.loadIngredientsFromStore(storeIngredients, menuDetail.get(type));
-        addIngredients(pizza, additional);
-        removeIngredients(pizza, toRemove);
-        return pizza;
-    }
-
-    /**
-     * Method that remove ingredients from a pizza.
-     *
-     * @param pizza    pizza
-     * @param toRemove ingredient list
-     */
-    private void removeIngredients(final Pizza pizza,
-            final List<IngredientType> toRemove) {
-        for (final IngredientType ingredientType : toRemove) {
-            pizza.removeIngredients(storeIngredients.get(ingredientType));
+        addIngredients(pizza, ingredients);
+        if (ingredients.isEmpty()) {
+            addIngredients(pizza, getDefaultIngredients(pizza.getPizzaType()));
         }
+        return pizza;
     }
 
     /**
@@ -126,9 +112,15 @@ public class PizzaFactory {
      * @param additional ingredient list
      */
     private void addIngredients(final Pizza pizza,
-            final List<IngredientType> additional) {
+            final Collection<IngredientType> additional) {
         for (final IngredientType ingredientType : additional) {
             pizza.addIngredients(storeIngredients.get(ingredientType));
         }
+    }
+
+    public Collection<IngredientType> getDefaultIngredients(
+            final PizzaTypes type) {
+        return menuDetail.containsKey(type) ? menuDetail.get(type)
+                : Collections.EMPTY_LIST;
     }
 }
