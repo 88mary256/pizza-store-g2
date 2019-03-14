@@ -71,8 +71,8 @@ public class OrderDialog extends JDialog {
         table.setBorder(UIManager.getBorder("List.focusCellHighlightBorder"));
 
         // add header of the table
-        final String header[] = new String[] {"Nro.", "Product", "Unit price",
-                "Quantity", "Partial Cost", "Actions" };
+        final String[] header = {"Nro.", "Product", "Ingredients",
+                "Unit price", "Quantity", "Partial Cost"};
 
         // add header in table model
         dtm.setColumnIdentifiers(header);
@@ -116,9 +116,9 @@ public class OrderDialog extends JDialog {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 final int i = table.getSelectedRow();
-                if (i > 0) {
+                if (i >= 0) {
                     dtm.removeRow(i);
-                    billing.removeProduct();
+                    billing.removeProduct(i);
                     lblTotalCost.setText(billing.getTotalCost() + "");
                 } else {
                     JOptionPane.showMessageDialog(null, "No row selected");
@@ -156,9 +156,9 @@ public class OrderDialog extends JDialog {
         final BillingItem billingItem = store.createBillingItem(orderItem);
         billing.addProduct(billingItem);
         dtm.addRow(new Object[] {billing.getItemsSize(),
-                billingItem.getProductType(),
+                billingItem.getProductType(), billingItem.getIngredients(),
                 billingItem.getProduct().getCost(), billingItem.getQuantity(),
-                billingItem.getCost(), "remove" });
+                billingItem.getCost()});
         lblTotalCost.setText(billing.getTotalCost() + "");
         this.revalidate();
         this.repaint();

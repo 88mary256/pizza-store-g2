@@ -53,7 +53,7 @@ public final class Cliente {
         customGreek.remove(IngredientType.ARTICHOKES);
         order.add(new OrderPizzaItem(1, PizzaTypes.GREEK_PIZZA,
                 (List<IngredientType>) customGreek));
-        order.add(new OrderItem(2, ProductType.LASANIA));
+        order.add(new OrderItem(2, ProductType.LASAGNA));
 
         final Billing billing = store.orderProducts(order);
         System.out.println(billing.getTotalCost());

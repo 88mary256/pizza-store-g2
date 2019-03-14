@@ -8,7 +8,7 @@ package pizzeria.data;
  */
 public enum ProductType {
     /** Product types. **/
-    PIZZA, LASANIA;
+    PIZZA, LASAGNA;
 
     /**
      * Get enum type from name.

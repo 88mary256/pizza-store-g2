@@ -1,6 +1,7 @@
 package pizzeria.data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -107,5 +108,19 @@ public class Pizza extends Product {
      */
     public PizzaTypes getPizzaType() {
         return type;
+    }
+
+    /**
+     * Get ingredient type list.
+     *
+     * @return list of IngredientType.
+     */
+    public List<IngredientType> getIngredientTypes() {
+        final List<IngredientType> result = new ArrayList<IngredientType>();
+        for (final Ingredient ingredient : ingredients) {
+            result.add(ingredient.getIngredient());
+        }
+        Collections.sort(result);
+        return result;
     }
 }

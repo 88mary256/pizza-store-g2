@@ -77,9 +77,14 @@ public class Billing {
         totalCost += item.getCost();
     }
 
-    public void removeProduct(final BillingItem item) {
-        items.remove(item);
-        totalCost -= item.getCost();
+    /**
+     * Remove product from billing and update totalcost.
+     *
+     * @param index index of the product to remove.
+     */
+    public void removeProduct(final int index) {
+        totalCost -= items.get(index).getCost();
+        items.remove(index);
     }
 
     /**

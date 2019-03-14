@@ -6,7 +6,7 @@ import java.util.Map;
 
 import pizzeria.data.Ingredient;
 import pizzeria.data.IngredientType;
-import pizzeria.data.Lasania;
+import pizzeria.data.Lasagna;
 import pizzeria.data.Pizza;
 import pizzeria.data.PizzaTypes;
 import pizzeria.data.Product;
@@ -77,7 +77,7 @@ public class Store {
                     orderPizzaItem.getPizzaType(),
                     orderPizzaItem.getIngredients());
             product = pizza;
-        } else if (item.getProductType() == ProductType.LASANIA) {
+        } else if (item.getProductType() == ProductType.LASAGNA) {
             product = orderLasania();
         }
         return new BillingItem(item.getQuantity(), product);
@@ -88,8 +88,8 @@ public class Store {
      *
      * @return Lasania
      */
-    public Lasania orderLasania() {
-        return new Lasania();
+    public Lasagna orderLasania() {
+        return new Lasagna();
     }
 
     /**

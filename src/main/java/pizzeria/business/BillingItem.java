@@ -72,4 +72,15 @@ public class BillingItem {
                 ? ((Pizza) product).getPizzaType().name()
                 : product.getProductType().name();
     }
+
+    /**
+     * Get ingredient types as string.
+     *
+     * @return ingredientType list.
+     */
+    public String getIngredients() {
+        return product.getProductType() == ProductType.PIZZA
+                ? ((Pizza) product).getIngredientTypes().toString()
+                : "";
+    }
 }

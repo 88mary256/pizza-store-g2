@@ -1,18 +1,18 @@
 package pizzeria.data;
 
 /**
+ * Lasagna product.
  *
  * @author Marines Lopez Soliz
- *
  */
-public class Lasania extends Product {
+public class Lasagna extends Product {
     /** Cost of a lasania. **/
-    public static final double LASANIA_COST = 35;
+    public static final double LASAGNA_COST = 35;
 
     /** Default Constructor. **/
-    public Lasania() {
-        this.productType = ProductType.LASANIA;
-        this.cost = LASANIA_COST;
+    public Lasagna() {
+        this.productType = ProductType.LASAGNA;
+        this.cost = LASAGNA_COST;
     }
 
     /** Customized toString method. **/
